@@ -20,7 +20,7 @@ public class Main {
             {"9", "*", "*", "9", "9", "9", "9", "9", "*", "*", "9"},
             {"9", "9", "9", "9", "9", "9", "9", "9", "9", "9", "9"}
     };
-    private static String actionLabel = "";
+    private static String actionLabelStr = "";
     private static String playerNameStr = ""; // "Игрок 1";
     private static String playerGoldStr = ""; //""Золото: 500";
     private static String playerSheepStr = ""; //""Овцы: 10";
@@ -30,6 +30,7 @@ public class Main {
     private static JLabel playerGold = (new JLabel(playerGoldStr));
     private static JLabel playerSheep =(new JLabel(playerSheepStr));
     private static JLabel playerLog = (new JLabel(playerLogStr));
+    private static  JLabel actionLabel = (new JLabel(actionLabelStr));
 
     private static JButton[][] buttons = new JButton[11][11];
     private static JButton end_button = new JButton("Начать игру");
@@ -75,8 +76,7 @@ public class Main {
         mainFrame.setIconImage(null);
         mainFrame.setJMenuBar(menuBar);
 
-        action.add(new Label("История действий:") );
-        action.add(new JLabel(actionLabel));
+        action.add(actionLabel);
 
         for (int a = 0; a < 11; a++) {
             for (int b = 0; b < 11; b++) {
@@ -120,12 +120,32 @@ public class Main {
         mainFrame.revalidate();
     }
 
+    public static void showPlayerInfo(int index){
+        playerNameStr = "Игрок " + (index + 1);
+        playerGoldStr = "Золото " + players.get(index).getGold();
+        playerSheepStr = "Овцы " + players.get(index).getSheep();
+        playerLogStr = "Дерево " + players.get(index).getForest();
+
+        playerName.setText(playerNameStr);
+        playerGold.setText(playerGoldStr);
+        playerSheep.setText(playerSheepStr);
+        playerLog.setText(playerLogStr);
+    }
+
+    public static int showCubeGenerator(){
+        //TODO сделать метод по отрисовке окна с кнопочкой для генераии броска кубика
+        int result = (int) (Math.random() * 6 + 1);
+        actionLabelStr = "Кубик выпал стороной " + result;
+        actionLabel.setText(actionLabelStr);
+
+        return result;
+    }
+
     public static void game(int index){
         end_button.setText("Завершить ход");
         System.out.println("Player " + index);
-        int cubeScore;
-        //TODO тут поставить метод по отрисовке окна с генерацией кубика, для записи шагов использовать cubeScore
-        cubeScore = 3;
+        showPlayerInfo(index);
+        int cubeScore = showCubeGenerator();
         players.get(index).move(cubeScore);
         //TODO сюда вкорячить метод на проверку клетки на владельца, чтото типа checkCell(player.get(x), player.get(y))
     }

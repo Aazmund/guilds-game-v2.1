@@ -155,6 +155,7 @@ public class Main {
             if (index == players.size()){
                 index = 0;
                 game(index);
+                index++;
             }else{
                 game(index);
                 index++;

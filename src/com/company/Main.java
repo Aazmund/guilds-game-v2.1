@@ -3,8 +3,6 @@ package com.company;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Main {
@@ -61,6 +59,38 @@ public class Main {
     private static Integer index = 0;
 
     private static Integer result = 0;
+
+    public static class CubeDialog extends JDialog{
+        public CubeDialog(){
+            super(mainFrame, "Начало хода", true);
+            Toolkit toolkit = Toolkit.getDefaultToolkit();
+            Dimension dimension = toolkit.getScreenSize();
+            setBounds(dimension.width / 2 - 75, dimension.height / 2 - 50, 150, 100);
+
+            setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+            JPanel Top_Panel = new JPanel();
+            JPanel Center_Panel = new JPanel();
+            add(Top_Panel);
+            add(Center_Panel);
+
+            JLabel action = new JLabel("Бросьте кубик");
+            Top_Panel.add(action);
+
+            JButton Start = new JButton("Бросить");
+            Center_Panel.add(Start);
+
+            Start.addActionListener(actionEvent -> {
+                result = (int) (Math.random() * 6 + 1);
+                setVisible(false);
+                dispose();
+            });
+
+            add(Top_Panel, BorderLayout.NORTH);
+            add(Center_Panel, BorderLayout.CENTER);
+
+            setVisible(true);
+        }
+    }
 
     public static void frameConfigurator(){
         Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -136,44 +166,8 @@ public class Main {
         playerLog.setText(playerLogStr);
     }
 
-    public static class CubeDialog extends JDialog{
-        public CubeDialog(){
-            super(mainFrame, "Начало хода", true);
-            Toolkit toolkit = Toolkit.getDefaultToolkit();
-            Dimension dimension = toolkit.getScreenSize();
-            setBounds(dimension.width / 2 - 75, dimension.height / 2 - 50, 150, 100);
-
-            setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-            JPanel Top_Panel = new JPanel();
-            JPanel Center_Panel = new JPanel();
-            add(Top_Panel);
-            add(Center_Panel);
-
-            JLabel action = new JLabel("Бросьте кубик");
-            Top_Panel.add(action);
-
-            JButton Start = new JButton("Бросить");
-            Center_Panel.add(Start);
-
-            Start.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent actionEvent) {
-                    result = (int) (Math.random() * 6 + 1);
-                    setVisible(false);
-                    dispose();
-                }
-            });
-
-            add(Top_Panel, BorderLayout.NORTH);
-            add(Center_Panel, BorderLayout.CENTER);
-
-            setVisible(true);
-        }
-    }
-
     public static int showCubeGenerator(){
 
-        //TODO сделать метод по отрисовке окна с кнопочкой для генераии броска кубика
         new CubeDialog();
         System.out.println("Кубик выпал стороной " + result);
         actionLabelStr = "Кубик выпал стороной " + result;
@@ -203,12 +197,14 @@ public class Main {
                 buttons[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.yellow));
                 break;
         }
-        //TODO сюда вкорячить метод на проверку клетки на владельца, чтото типа checkCell(player.get(x), player.get(y))
+        //TODO сюда вкорячить метод на проверку клетки на владельца, чтото типа checkCell(player.get(x), player.get(y)
+        MapEvent mapEvent = new MapEvent();
+        mapEvent.checkEvent(tileMap[players.get(index).getX()][players.get(index).getY()], players.get(index));
     }
 
     public static void startGame(){
         end_button.addActionListener(e -> {
-            if (index == players.size()){
+            if(index == players.size()){
                 index = 0;
                 game(index);
                 index++;

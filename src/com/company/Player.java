@@ -10,6 +10,7 @@ public class Player {
     private ArrayList<Pair> innerPairs= new ArrayList<>();
     private ArrayList<Pair> outerPairs= new ArrayList<>();
     private boolean resolution = true;
+    private boolean mobile = true;
     private short[] innerList = {1,5,1,6,1,7,2,8,3,9,4,9,5,9,6,9,7,9,8,8,9,7,9,6,9,5,9,4,9,3,8,2,7,1,6,1,5,1,4,1,3,1,2,2,1,3,1,4};
     private short[] outerList = {0,0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,1,10,2,10,3,10,4,10,5,10,6,10,7,10,8,10,9,10,10,10,10,9,10,8,10,7,10,6,10,5,10,4,10,3,10,2,10,1,10,0,9,0,8,0,7,0,6,0,5,0,4,0,3,0,2,0,1,0};
     private String type;
@@ -432,6 +433,14 @@ public class Player {
         }else if(x >= 1 && x<= 5 && y >= 1 && y <= 4){
             moveOnInnerCircle(8, movement);
         }
+    }
+
+    public void setMobile(boolean mobile){
+        this.mobile = mobile;
+    }
+
+    public boolean getMobile(){
+        return mobile;
     }
 
     public void setStartPosition(){

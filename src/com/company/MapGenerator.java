@@ -125,25 +125,25 @@ public class MapGenerator {
     private void gen_sec_4(int param, String map[][]){
         switch (param){
             case(1):
-                map[10][0] = String.valueOf(mini_line[4]);
-                map[10][1] = String.valueOf(mini_line[3]);
+                map[10][0] = String.valueOf(mini_line[0]);
+                map[10][1] = String.valueOf(mini_line[1]);
                 map[10][2] = String.valueOf(mini_line[2]);
-                map[10][3] = String.valueOf(mini_line[1]);
-                map[10][4] = String.valueOf(mini_line[0]);
+                map[10][3] = String.valueOf(mini_line[3]);
+                map[10][4] = String.valueOf(mini_line[4]);
                 break;
             case(2):
-                map[10][0] = String.valueOf(mini_line_2[4]);
-                map[10][1] = String.valueOf(mini_line_2[3]);
+                map[10][0] = String.valueOf(mini_line_2[0]);
+                map[10][1] = String.valueOf(mini_line_2[1]);
                 map[10][2] = String.valueOf(mini_line_2[2]);
-                map[10][3] = String.valueOf(mini_line_2[1]);
-                map[10][4] = String.valueOf(mini_line_2[0]);
+                map[10][3] = String.valueOf(mini_line_2[3]);
+                map[10][4] = String.valueOf(mini_line_2[4]);
                 break;
             case(3):
-                map[10][0] = String.valueOf(mini_line_3[4]);
-                map[10][1] = String.valueOf(mini_line_3[3]);
+                map[10][0] = String.valueOf(mini_line_3[0]);
+                map[10][1] = String.valueOf(mini_line_3[1]);
                 map[10][2] = String.valueOf(mini_line_3[2]);
-                map[10][3] = String.valueOf(mini_line_3[1]);
-                map[10][4] = String.valueOf(mini_line_3[0]);
+                map[10][3] = String.valueOf(mini_line_3[3]);
+                map[10][4] = String.valueOf(mini_line_3[4]);
                 break;
             case(4):
                 map[10][0] = String.valueOf(mini_line_4[0]);

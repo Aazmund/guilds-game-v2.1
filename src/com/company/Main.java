@@ -105,6 +105,49 @@ public class Main {
         }
     }
 
+    public static class WhiteHarbor extends JDialog{
+        public WhiteHarbor(){
+            super(mainFrame, "WhiteHarbor", true);
+            Toolkit toolkit = Toolkit.getDefaultToolkit();
+            Dimension dimension = toolkit.getScreenSize();
+            setBounds(dimension.width / 2 - 100, dimension.height / 2 - 100, 200, 200);
+
+            setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            JPanel Top_Panel = new JPanel();
+            JPanel Center_Panel = new JPanel();
+            JPanel Bottom_Panel = new JPanel();
+
+            setLayout(new GridLayout(3,1));
+
+            JLabel name = new JLabel("Порт Белая Гавань");
+            Top_Panel.add(name);
+
+            JLabel attempts = new JLabel("Ваши попытки");
+            Top_Panel.add(attempts);
+
+            JButton Start = new JButton("Начать работу");
+            Center_Panel.add(Start);
+
+            JLabel result = new JLabel("Результат");
+            Bottom_Panel.add(result);
+
+            JLabel message = new JLabel("Вы получили 20 золота");
+            Bottom_Panel.add(message);
+
+
+            Start.addActionListener(actionEvent -> {
+                setVisible(false);
+                dispose();
+            });
+
+            add(Top_Panel, BorderLayout.NORTH);
+            add(Center_Panel, BorderLayout.CENTER);
+            add(Bottom_Panel, BorderLayout.SOUTH);
+
+            setVisible(true);
+        }
+    }
+
     public static void frameConfigurator(){
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension dimension = toolkit.getScreenSize();
@@ -189,6 +232,7 @@ public class Main {
         playerGold.setText(playerGoldStr);
         playerSheep.setText(playerSheepStr);
         playerLog.setText(playerLogStr);
+
     }
 
     public static int showCubeGenerator(){

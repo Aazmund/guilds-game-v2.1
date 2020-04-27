@@ -1,10 +1,15 @@
 package com.company;
 
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
@@ -34,8 +39,9 @@ public class Main {
     private static JLabel playerLog = (new JLabel(playerLogStr));
     private static  JLabel actionLabel = (new JLabel(actionLabelStr));
 
-    private static JButton[][] buttons = new JButton[11][11];
+    private static JPanel[][] panels = new JPanel[11][11];
     private static JButton end_button = new JButton("Начать игру");
+    private static JButton buy_button = new JButton("Покупка");
 
     private static JFrame mainFrame = new JFrame();
 
@@ -47,6 +53,7 @@ public class Main {
     private static JMenuItem threePlayers = new JMenuItem("3 Игрока");
     private static JMenuItem fourPlayers = new JMenuItem("4 Игрока");
     private static JMenuItem fivePlayers = new JMenuItem("5 Игроков");
+    private static JMenuItem sixPlayers = new JMenuItem("6 Игроков");
 
     private static JPanel action = new JPanel();
     private static JPanel playerWindow = new JPanel();
@@ -55,6 +62,10 @@ public class Main {
     private static JPanel bottom = new JPanel();
     private static JPanel gameMap = new JPanel();
     private static JPanel buttonAction = new JPanel();
+
+    private static JPanel[][] tabs = new JPanel[11][11];
+    private static JPanel[] panelPlayer = new JPanel[6];
+
 
     private static ArrayList<Player> players = new ArrayList<>();
 
@@ -70,6 +81,7 @@ public class Main {
         menu.add(threePlayers);
         menu.add(fourPlayers);
         menu.add(fivePlayers);
+        menu.add(sixPlayers);
 
         menuBar.add(menu);
 
@@ -82,16 +94,29 @@ public class Main {
 
         action.add(actionLabel);
 
+
+
         for (int a = 0; a < 11; a++) {
             for (int b = 0; b < 11; b++) {
-                buttons[a][b] = new JButton();
-                buttons[a][b].setBorder(null);
-                buttons[a][b].setFocusPainted(false);
-                buttons[a][b].setContentAreaFilled(false);
+                panels[a][b] = new JPanel();
+                tabs[a][b] = new JPanel();
                 if (!tileMap[a][b].equals("*")) {
-                    buttons[a][b].setIcon(new ImageIcon("graphics/rsz_1.png"));
+                    panels[a][b].setLayout(new BorderLayout());
+                    for (int x = 0; x < 6; x++) {
+                        panelPlayer[x] = new JPanel();
+                        panelPlayer[x].setBackground(Color.black);
+                        tabs[a][b].add(panelPlayer[x]);
+                    }
+                    panels[a][b].add(tabs[a][b], BorderLayout.NORTH);
+                    try {
+                        BufferedImage myPicture = ImageIO.read(new File("graphics/rsz_1.png"));
+                        JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+                        panels[a][b].add(picLabel, BorderLayout.CENTER);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-                gameMap.add(buttons[a][b]);
+                gameMap.add(panels[a][b]);
             }
         }
 
@@ -113,6 +138,7 @@ public class Main {
         gameMap.setLayout(new GridLayout(11, 11, 1, 1));
 
         buttonAction.add(end_button);
+        buttonAction.add(buy_button);
 
         playerWindow.setLayout(new GridLayout(4, 1, 1, 1));
         playerWindow.add(playerName);
@@ -171,6 +197,51 @@ public class Main {
         }
     }
 
+    public static class messageActionDiaolog extends JDialog{
+        public messageActionDiaolog(){
+            super(mainFrame, "", true);
+            Toolkit toolkit = Toolkit.getDefaultToolkit();
+            Dimension dimension = toolkit.getScreenSize();
+            setBounds(dimension.width / 2 - 75, dimension.height / 2 - 75, 150, 150);
+
+            setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            JPanel Top_Panel = new JPanel();
+            JPanel Center_Panel = new JPanel();
+            JPanel Bottom_Panel = new JPanel();
+            add(Top_Panel);
+            add(Center_Panel);
+            add(Bottom_Panel);
+
+            JLabel actionMessage = new JLabel("Место");
+            Top_Panel.add(actionMessage);
+
+            JLabel str = new JLabel("Ваше золото: "+ players.get(index).getGold());
+            Center_Panel.add(str);
+
+            JLabel str1 = new JLabel("Ваши лошади: "+ players.get(index).getHorse());
+            Center_Panel.add(str1);
+
+
+            JButton Buy = new JButton("Купить");
+            Bottom_Panel.add(Buy);
+
+            Buy.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    setVisible(false);
+                    dispose();
+                }
+            });
+
+            add(Top_Panel, BorderLayout.NORTH);
+            add(Center_Panel, BorderLayout.CENTER);
+            add(Bottom_Panel, BorderLayout.SOUTH);
+
+            setVisible(true);
+
+        }
+    }
+
     public static int showCubeGenerator(){
 
         //TODO сделать метод по отрисовке окна с кнопочкой для генераии броска кубика
@@ -187,22 +258,23 @@ public class Main {
         System.out.println("Player " + index);
         showPlayerInfo(index);
         int cubeScore = showCubeGenerator();
-        buttons[players.get(index).getX()][players.get(index).getY()].setBorder(null);
+        panels[players.get(index).getX()][players.get(index).getY()].setBorder(null);
         players.get(index).move(cubeScore);
         switch (index) {
             case 0:
             players.get(index).getCurrentPosition();
-            buttons[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.red));
+            panels[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.red));
             break;
             case 1:
                 players.get(index).getCurrentPosition();
-                buttons[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.green));
+                panels[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.green));
                 break;
             case 2:
                 players.get(index).getCurrentPosition();
-                buttons[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.yellow));
+                panels[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.yellow));
                 break;
         }
+
         //TODO сюда вкорячить метод на проверку клетки на владельца, чтото типа checkCell(player.get(x), player.get(y))
     }
 
@@ -215,6 +287,12 @@ public class Main {
             }else{
                 game(index);
                 index++;
+            }
+        });
+        buy_button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new messageActionDiaolog();
             }
         });
     }
@@ -271,5 +349,17 @@ public class Main {
             }
             startGame();
         });
+
+        sixPlayers.addActionListener(e -> {
+            MapGenerator mapGenerator = new MapGenerator();
+            mapGenerator.generateMap(tileMap);
+            for (int i = 0; i < 6; i++) {
+                Player player = new Player();
+                player.setStartPosition();
+                players.add(player);
+            }
+            startGame();
+        });
     }
+
 }

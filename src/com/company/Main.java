@@ -5,6 +5,9 @@ import javax.imageio.ImageReader;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -39,7 +42,6 @@ public class Main {
 
     private static JPanel[][] panels = new JPanel[11][11];
     private static JButton end_button = new JButton("Начать игру");
-    private static JButton buy_button = new JButton("Покупка");
 
     private static JFrame mainFrame = new JFrame();
 
@@ -124,8 +126,6 @@ public class Main {
 
         action.add(actionLabel);
 
-
-
         for (int a = 0; a < 11; a++) {
             for (int b = 0; b < 11; b++) {
                 panels[a][b] = new JPanel();
@@ -168,7 +168,6 @@ public class Main {
         gameMap.setLayout(new GridLayout(11, 11, 1, 1));
 
         buttonAction.add(end_button);
-        buttonAction.add(buy_button);
 
         playerWindow.setLayout(new GridLayout(4, 1, 1, 1));
         playerWindow.add(playerName);
@@ -237,12 +236,6 @@ public class Main {
             }else{
                 game(index);
                 index++;
-            }
-        });
-        buy_button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                new messageActionDiaolog();
             }
         });
     }

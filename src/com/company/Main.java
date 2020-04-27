@@ -73,6 +73,8 @@ public class Main {
 
     private static Integer result = 0;
 
+    public static MapEvent mapEvent = new MapEvent();
+
     public static class CubeDialog extends JDialog{
         public CubeDialog(){
             super(mainFrame, "Начало хода", true);
@@ -208,22 +210,7 @@ public class Main {
         int cubeScore = showCubeGenerator();
         panels[players.get(index).getX()][players.get(index).getY()].setBorder(null);
         players.get(index).move(cubeScore);
-        switch (index) {
-            case 0:
-            players.get(index).getCurrentPosition();
-            panels[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.red));
-            break;
-            case 1:
-                players.get(index).getCurrentPosition();
-                panels[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.green));
-                break;
-            case 2:
-                players.get(index).getCurrentPosition();
-                panels[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.yellow));
-                break;
-        }
         //TODO сюда вкорячить метод на проверку клетки на владельца, чтото типа checkCell(player.get(x), player.get(y)
-        MapEvent mapEvent = new MapEvent();
         mapEvent.checkEvent(tileMap[players.get(index).getX()][players.get(index).getY()], players.get(index));
     }
 
@@ -255,6 +242,7 @@ public class Main {
             for (int i = 0; i < 2; i++) {
                 Player player = new Player();
                 player.setStartPosition();
+                player.setName("player" + (i+1));
                 players.add(player);
             }
             startGame();
@@ -266,6 +254,7 @@ public class Main {
             for (int i = 0; i < 3; i++) {
                 Player player = new Player();
                 player.setStartPosition();
+                player.setName("player" + (i+1));
                 players.add(player);
             }
             startGame();
@@ -277,6 +266,7 @@ public class Main {
             for (int i = 0; i < 4; i++) {
                 Player player = new Player();
                 player.setStartPosition();
+                player.setName("player" + (i+1));
                 players.add(player);
             }
             startGame();
@@ -288,6 +278,7 @@ public class Main {
             for (int i = 0; i < 5; i++) {
                 Player player = new Player();
                 player.setStartPosition();
+                player.setName("player" + (i+1));
                 players.add(player);
             }
             startGame();
@@ -299,6 +290,7 @@ public class Main {
             for (int i = 0; i < 6; i++) {
                 Player player = new Player();
                 player.setStartPosition();
+                player.setName("player" + (i+1));
                 players.add(player);
             }
             startGame();

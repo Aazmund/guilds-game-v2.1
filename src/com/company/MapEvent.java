@@ -1,36 +1,62 @@
 package com.company;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
+import java.util.HashMap;
 
 public class MapEvent {
 
+    private HashMap<String, String> owners = new HashMap<>();
+
+    public MapEvent(){
+        for (int i = 100; i < 136; i++) {
+            owners.put(String.valueOf(i), "null");
+        }
+        System.out.println(owners);
+    }
+
     public void checkEvent(String id, Player player){
-        switch (id){
-            case("11"):
-                whiteHarbor(player);
-                break;
 
-            case("21"):
-                break;
+        if(Integer.parseInt(id) >= 100 && Integer.parseInt(id) <= 135){
+            if(owners.get(id).equals("null")){
+                //TODO метод для покупки клетки и размещение на ней всякого
+                int answer = JOptionPane.showConfirmDialog(null, "Хотите приобрести землю?",null, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                switch (answer){
+                    case(0):
+                        owners.replace(id, "null", player.getName());
+                }
+            }else if(owners.get(id).equals(player.getName())){
+                //TODO вызов настройки клетки
+            }else {
+                //TODO платим штраф
+            }
+            System.out.println(owners);
+        }else{
+            switch (id){
+                case("11"):
+                    whiteHarbor(player);
+                    break;
 
-            case("31"):
-                break;
+                case("21"):
+                    break;
 
-            case("41"):
-                break;
+                case("31"):
+                    break;
 
-            case("12"):
-                break;
+                case("41"):
+                    break;
 
-            case("22"):
-                break;
+                case("12"):
+                    break;
 
-            case("32"):
-                break;
+                case("22"):
+                    break;
 
-            case("42"):
-                break;
+                case("32"):
+                    break;
+
+                case("42"):
+                    break;
+            }
         }
     }
 

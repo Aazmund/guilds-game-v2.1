@@ -2,14 +2,14 @@ package com.company;
 
 public class MapGenerator {
 
-    private static short[] mini_line = {11,0,0,0,12};
-    private static short[] mini_line_2 = {21,0,0,0,22};
-    private static short[] mini_line_3 = {31,0,0,0,32};
-    private static short[] mini_line_4 = {41,0,0,0,42};
-    private static short[] line = {51,0,0,0,531,532,52,53,0,0,0};
-    private static short[] line_2 = {61,0,0,0,631,632,62,0,0,0,63};
-    private static short[] line_3 = {0,0,0,71,731,732,72,73,0,0,0};
-    private static short[] line_4 = {81,0,0,0,831,832,82,83,0,0,0};
+    private static short[] mini_line = {11,100,101,102,12};
+    private static short[] mini_line_2 = {21,103,104,105,22};
+    private static short[] mini_line_3 = {31,106,107,108,32};
+    private static short[] mini_line_4 = {41,109,110,111,42};
+    private static short[] line = {51,112,113,114,531,532,52,53,155,116,117};
+    private static short[] line_2 = {61,118,119,120,631,632,62,121,122,123,63};
+    private static short[] line_3 = {124,125,126,71,731,732,72,73,127,128,129};
+    private static short[] line_4 = {81,130,131,132,831,832,82,83,133,134,135};
 
     private static short[] rnd_minList = {1,2,3,4};
     private static short[] rnd_List = {1,2,3,4};

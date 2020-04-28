@@ -1,42 +1,51 @@
 package com.company;
 
 import javax.swing.*;
-import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MapEvent {
 
-    private HashMap<String, String> owners = new HashMap<>();
+//    private HashMap<String, String> owners = new HashMap<>();
+    private Owners owners = new Owners();
 
     public MapEvent(){
         for (int i = 100; i < 136; i++) {
-            owners.put(String.valueOf(i), "null");
+            owners.addNewField(i, "null", "null");
         }
         System.out.println(owners);
     }
 
-    public void checkEvent(String id, Player player){
+    public void checkEvent(String id, Player player, ArrayList<Player> players){
 
         if(Integer.parseInt(id) >= 100 && Integer.parseInt(id) <= 135){
-            if(owners.get(id).equals("null")){
+            if(owners.getOwnerById(Integer.parseInt(id)).equals("null")){
                 //TODO метод для покупки клетки и размещение на ней всякого
                 int answer = JOptionPane.showConfirmDialog(null, "Хотите приобрести землю?",null, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                 switch (answer){
                     case(0):
                         if (player.getGold() >= 20){
-                            player.setGold(player.getGold() - 20);
-                            owners.replace(id, "null", player.getName());
-                            break;
+                            player.setGold(-20);
+                            owners.changeFieldOwner(Integer.parseInt(id), player.getName());
+                            answer = JOptionPane.showConfirmDialog(null, "Хотите сделать постройку?",null, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                            switch (answer){
+                                case (0):
+                                    //TODO рисуем форму с взаимодействием с клеткой
+                                    break;
+                            }
                         }else{
                             JOptionPane.showMessageDialog(null, "У Вас недостаточно денег!");
-                            break;
                         }
-
+                        break;
                 }
-            }else if(owners.get(id).equals(player.getName())){
-                //TODO вызов настройки клетки
+            }else if(owners.getOwnerById(Integer.parseInt(id)).equals(player.getName())){
+                //TODO рисуем форму с взаимодействием с клеткой
             }else {
                 //TODO платим штраф
+                JOptionPane.showMessageDialog(null, "Вы попали на чужую клетку. Заплатите штраф!");
+                player.addGold(- 20);
+                String s = owners.getOwnerById(Integer.parseInt(id));
+                players.get(Integer.parseInt(s.substring(s.length() - 1)) - 1).addGold(20);
             }
             System.out.println(owners);
         }else{

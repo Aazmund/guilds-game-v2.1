@@ -212,7 +212,7 @@ public class Main {
         panels[players.get(index).getX()][players.get(index).getY()].setBorder(null);
         players.get(index).move(cubeScore);
         //TODO сюда вкорячить метод на проверку клетки на владельца, чтото типа checkCell(player.get(x), player.get(y)
-        mapEvent.checkEvent(tileMap[players.get(index).getX()][players.get(index).getY()], players.get(index));
+        mapEvent.checkEvent(tileMap[players.get(index).getX()][players.get(index).getY()], players.get(index), players);
     }
 
     public static void startGame(){

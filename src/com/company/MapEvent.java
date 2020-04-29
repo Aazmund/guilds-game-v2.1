@@ -2,67 +2,107 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 
 public class MapEvent {
 
-    public static class CellAction extends JFrame{
-        public CellAction(){
-//            super(mainFrame, "Взаимодействие с клеткой", true);
+    private Owners owners = new Owners();
+
+    public class CellAction extends JFrame{
+
+        private JPanel Top_Panel = new JPanel();
+        private JPanel Center_Panel = new JPanel();
+        private JPanel Bottom_Panel = new JPanel();
+        private JPanel Info_Panel = new JPanel();
+        private JPanel Button_Panel = new JPanel();
+        private JLabel str = new JLabel("Основная информация");
+        JLabel str1 = new JLabel("Владелец: ");
+        JLabel str2 = new JLabel("Текущие производство: ");
+        JLabel str3  = new JLabel("Количество акций: ");
+        JButton btn1 = new JButton("Поставить мельницу");
+        JButton btn2 = new JButton("Поставить ферму");
+        JButton btn3 = new JButton("Поставить керамику");
+        JButton btn4 = new JButton("Поставить сукно");
+        JButton btn5 = new JButton("Поставить виноделие");
+        JButton btn6 = new JButton("Поставить оружие");
+        JButton btn7 = new JButton("Купить акцию текущего производства");
+
+        private void updateForm(int id){
+            String buf = "";
+            buf = owners.getOwnerById(id);
+            str1.setText("Владелец: " + buf);
+            buf = owners.getManufactureById(id);
+            str2.setText("Текущее производство: " + buf);
+        }
+
+        public CellAction(int id){
+            updateForm(id);
+            setTitle("Взаимодействие с клеткой");
             Toolkit toolkit = Toolkit.getDefaultToolkit();
             Dimension dimension = toolkit.getScreenSize();
-//            setBounds(dimension.width / 2 - 320, dimension.height / 2 - 90, 640, 180);
-
-            setSize(600, 800);
+            setBounds(dimension.width / 2 - 320, dimension.height / 2 - 90, 640, 180);
             setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            JPanel Top_Panel = new JPanel();
-            JPanel Center_Panel = new JPanel();
-            JPanel Bottom_Panel = new JPanel();
-            JPanel Info_Panel = new JPanel();
-            JPanel Button_Panel = new JPanel();
 
-            JLabel str = new JLabel("Основная информация");
             Top_Panel.add(str);
-
             Info_Panel.setLayout(new GridLayout(3,1));
-            JLabel str1 = new JLabel("Владелец: ");
             Info_Panel.add(str1);
-            JLabel str2 = new JLabel("Текущие производство: ");
             Info_Panel.add(str2);
-            JLabel str3  = new JLabel("Количество акций: ");
             Info_Panel.add(str3);
-
             Center_Panel.add(Info_Panel);
 
             Button_Panel.setLayout(new GridLayout(1,6,5,0));
-            JButton btn1 = new JButton("Бросить");
             Button_Panel.add(btn1);
-            JButton btn2 = new JButton("Бросить");
             Button_Panel.add(btn2);
-            JButton btn3 = new JButton("Бросить");
             Button_Panel.add(btn3);
-            JButton btn4 = new JButton("Бросить");
             Button_Panel.add(btn4);
-            JButton btn5 = new JButton("Бросить");
             Button_Panel.add(btn5);
-            JButton btn6 = new JButton("Бросить");
             Button_Panel.add(btn6);
-            JButton btn7 = new JButton("Бросить");
             Button_Panel.add(btn7);
-
-
             Bottom_Panel.add(Button_Panel);
 
             add(Top_Panel, BorderLayout.NORTH);
             add(Center_Panel, BorderLayout.WEST);
             add(Bottom_Panel, BorderLayout.SOUTH);
 
+            btn1.addActionListener(e -> {
+                if (owners.getManufactureById(id).equals("null")){
+                    owners.setManufactureById(id, "Мельница");
+                }else{
+                    JOptionPane.showMessageDialog(null, "На этой клетке уже есть производство!");
+                }
+                updateForm(id);
+            });
+
+            btn2.addActionListener(e -> {
+
+            });
+
+            btn3.addActionListener(e -> {
+
+            });
+
+            btn4.addActionListener(e -> {
+
+            });
+
+            btn5.addActionListener(e -> {
+
+            });
+
+            btn6.addActionListener(e -> {
+
+            });
+
+            btn7.addActionListener(e -> {
+
+            });
+
             setVisible(true);
         }
     }
-
-    private Owners owners = new Owners();
 
     public MapEvent(){
         for (int i = 100; i < 136; i++) {
@@ -80,13 +120,13 @@ public class MapEvent {
                 switch (answer){
                     case(0):
                         if (player.getGold() >= 20){
-                            player.setGold(-20);
+                            player.removeGold(20);
                             owners.changeFieldOwner(Integer.parseInt(id), player.getName());
                             answer = JOptionPane.showConfirmDialog(null, "Хотите сделать постройку?",null, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                             switch (answer){
                                 case (0):
                                     //TODO рисуем форму с взаимодействием с клеткой
-                                    new CellAction();
+                                    new CellAction(Integer.parseInt(id));
                                     break;
                             }
                         }else{
@@ -99,7 +139,7 @@ public class MapEvent {
             }else {
                 //TODO платим штраф
                 JOptionPane.showMessageDialog(null, "Вы попали на чужую клетку. Заплатите штраф!");
-                player.addGold(- 20);
+                player.removeGold(20);
                 String s = owners.getOwnerById(Integer.parseInt(id));
                 players.get(Integer.parseInt(s.substring(s.length() - 1)) - 1).addGold(20);
             }

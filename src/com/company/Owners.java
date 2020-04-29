@@ -7,6 +7,7 @@ public class Owners {
     private ArrayList<Owners> container = new ArrayList<>();
 
     private int fieldId;
+    private int share;
     private String owner;
     private String manufacture;
 
@@ -32,9 +33,9 @@ public class Owners {
     }
 
     public void changeFieldOwner(int id, String name){
-        for (int i = 0; i < container.size(); i++){
-            if (container.get(i).getFieldId() == id){
-                container.get(i).setOwner(name);
+        for (Owners owners : container) {
+            if (owners.getFieldId() == id) {
+                owners.setOwner(name);
                 break;
             }
         }
@@ -58,6 +59,26 @@ public class Owners {
 
     public String getManufacture() {
         return manufacture;
+    }
+
+    public String getManufactureById(int id) {
+        String result = "";
+        for (Owners owners : container) {
+            if (owners.getFieldId() == id) {
+                result = owners.getManufacture();
+                break;
+            }
+        }
+        return result;
+    }
+
+    public void setManufactureById(int id, String manufacture){
+        for (Owners owners : container) {
+            if (owners.getFieldId() == id) {
+                owners.setManufacture(manufacture);
+                break;
+            }
+        }
     }
 
     public void setManufacture(String manufacture) {

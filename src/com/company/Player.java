@@ -86,6 +86,10 @@ public class Player {
         this.gold += gold;
     }
 
+    public void removeGold(int gold){
+        this.gold -= gold;
+    }
+
     public void addForest(int forest){
         this.forest += forest;
     }

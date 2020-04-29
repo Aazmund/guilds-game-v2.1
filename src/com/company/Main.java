@@ -244,6 +244,7 @@ public class Main {
                 Player player = new Player();
                 player.setStartPosition();
                 player.setName("player" + (i+1));
+                player.addGold(100);
                 players.add(player);
             }
             startGame();

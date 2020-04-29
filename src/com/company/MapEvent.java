@@ -1,12 +1,67 @@
 package com.company;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashMap;
+
 
 public class MapEvent {
 
-//    private HashMap<String, String> owners = new HashMap<>();
+    public static class CellAction extends JFrame{
+        public CellAction(){
+//            super(mainFrame, "Взаимодействие с клеткой", true);
+            Toolkit toolkit = Toolkit.getDefaultToolkit();
+            Dimension dimension = toolkit.getScreenSize();
+//            setBounds(dimension.width / 2 - 320, dimension.height / 2 - 90, 640, 180);
+
+            setSize(600, 800);
+            setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            JPanel Top_Panel = new JPanel();
+            JPanel Center_Panel = new JPanel();
+            JPanel Bottom_Panel = new JPanel();
+            JPanel Info_Panel = new JPanel();
+            JPanel Button_Panel = new JPanel();
+
+            JLabel str = new JLabel("Основная информация");
+            Top_Panel.add(str);
+
+            Info_Panel.setLayout(new GridLayout(3,1));
+            JLabel str1 = new JLabel("Владелец: ");
+            Info_Panel.add(str1);
+            JLabel str2 = new JLabel("Текущие производство: ");
+            Info_Panel.add(str2);
+            JLabel str3  = new JLabel("Количество акций: ");
+            Info_Panel.add(str3);
+
+            Center_Panel.add(Info_Panel);
+
+            Button_Panel.setLayout(new GridLayout(1,6,5,0));
+            JButton btn1 = new JButton("Бросить");
+            Button_Panel.add(btn1);
+            JButton btn2 = new JButton("Бросить");
+            Button_Panel.add(btn2);
+            JButton btn3 = new JButton("Бросить");
+            Button_Panel.add(btn3);
+            JButton btn4 = new JButton("Бросить");
+            Button_Panel.add(btn4);
+            JButton btn5 = new JButton("Бросить");
+            Button_Panel.add(btn5);
+            JButton btn6 = new JButton("Бросить");
+            Button_Panel.add(btn6);
+            JButton btn7 = new JButton("Бросить");
+            Button_Panel.add(btn7);
+
+
+            Bottom_Panel.add(Button_Panel);
+
+            add(Top_Panel, BorderLayout.NORTH);
+            add(Center_Panel, BorderLayout.WEST);
+            add(Bottom_Panel, BorderLayout.SOUTH);
+
+            setVisible(true);
+        }
+    }
+
     private Owners owners = new Owners();
 
     public MapEvent(){
@@ -31,6 +86,7 @@ public class MapEvent {
                             switch (answer){
                                 case (0):
                                     //TODO рисуем форму с взаимодействием с клеткой
+                                    new CellAction();
                                     break;
                             }
                         }else{

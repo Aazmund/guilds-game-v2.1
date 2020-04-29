@@ -55,12 +55,12 @@ public class MapEvent {
 
             Button_Panel.setLayout(new GridLayout(1,6,5,0));
             Button_Panel.add(btn1);
-            Button_Panel.add(btn2);
-            Button_Panel.add(btn3);
-            Button_Panel.add(btn4);
-            Button_Panel.add(btn5);
-            Button_Panel.add(btn6);
-            Button_Panel.add(btn7);
+//            Button_Panel.add(btn2);
+//            Button_Panel.add(btn3);
+//            Button_Panel.add(btn4);
+//            Button_Panel.add(btn5);
+//            Button_Panel.add(btn6);
+//            Button_Panel.add(btn7);
             Bottom_Panel.add(Button_Panel);
 
             add(Top_Panel, BorderLayout.NORTH);

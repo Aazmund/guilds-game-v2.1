@@ -261,13 +261,13 @@ public class Main {
                 panelPlayer2[players.get(index).getX()][players.get(index).getY()].setBackground(Color.blue);
                 break;
             case 3:
-                panelPlayer2[players.get(index).getX()][players.get(index).getY()].setBackground(Color.yellow);
+                panelPlayer3[players.get(index).getX()][players.get(index).getY()].setBackground(Color.yellow);
                 break;
             case 4:
-                panelPlayer2[players.get(index).getX()][players.get(index).getY()].setBackground(Color.pink);
+                panelPlayer4[players.get(index).getX()][players.get(index).getY()].setBackground(Color.pink);
                 break;
             case 5:
-                panelPlayer2[players.get(index).getX()][players.get(index).getY()].setBackground(Color.magenta);
+                panelPlayer5[players.get(index).getX()][players.get(index).getY()].setBackground(Color.magenta);
                 break;
         }
         //TODO сюда вкорячить метод на проверку клетки на владельца, чтото типа checkCell(player.get(x), player.get(y)

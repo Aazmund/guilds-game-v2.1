@@ -3,6 +3,7 @@ package com.company;
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -161,8 +162,9 @@ public class Main {
                     panels[a][b].setLayout(new BorderLayout());
                     panels[a][b].add(tabs[a][b], BorderLayout.NORTH);
                     try {
-                        BufferedImage myPicture = ImageIO.read(new File("graphics/rsz_1.png"));
+                        BufferedImage myPicture = ImageIO.read(new File("graphics\\WhiteHarborPort.png"));
                         JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+                        picLabel.setBorder(BorderFactory.createLineBorder(Color.black,1));
                         panels[a][b].add(picLabel, BorderLayout.CENTER);
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -186,12 +188,12 @@ public class Main {
         panel.add(top, BorderLayout.CENTER);
         panel.add(bottom, BorderLayout.SOUTH);
 
-        gameMap.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, Color.GRAY));
-        gameMap.setLayout(new GridLayout(11, 11, 1, 1));
+        gameMap.setBorder(BorderFactory.createMatteBorder(0, 0, 3, 3, Color.black));
+        gameMap.setLayout(new GridLayout(11, 11, 5, 5));
 
         buttonAction.add(end_button);
 
-        playerWindow.setLayout(new GridLayout(4, 1, 1, 1));
+        playerWindow.setLayout(new GridLayout(4, 1, 5, 5));
         playerWindow.add(playerName);
         playerWindow.add(playerGold);
         playerWindow.add(playerSheep);
@@ -295,7 +297,6 @@ public class Main {
         frameConfigurator();
 
         mainFrame.setVisible(true);
-
         twoPlayers.addActionListener(e -> {
             MapGenerator mapGenerator = new MapGenerator();
             mapGenerator.generateMap(tileMap);

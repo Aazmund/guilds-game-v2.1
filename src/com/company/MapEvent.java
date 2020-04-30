@@ -122,6 +122,26 @@ public class MapEvent {
                         if (player.getGold() >= 20){
                             player.removeGold(20);
                             owners.changeFieldOwner(Integer.parseInt(id), player.getName());
+//                            switch (index) {
+//                                case 0:
+//                                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.red);
+//                                    break;
+//                                case 1:
+//                                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.green);
+//                                    break;
+//                                case 2:
+//                                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.blue);
+//                                    break;
+//                                case 3:
+//                                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.yellow);
+//                                    break;
+//                                case 4:
+//                                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.pink);
+//                                    break;
+//                                case 5:
+//                                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.magenta);
+//                                    break;
+//                            }
                             answer = JOptionPane.showConfirmDialog(null, "Хотите сделать постройку?",null, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                             switch (answer){
                                 case (0):

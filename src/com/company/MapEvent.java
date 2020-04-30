@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class MapEvent {
 
     private Owners owners = new Owners();
+    private int ownerIndex;
 
     public class CellAction extends JFrame{
 
@@ -104,6 +105,10 @@ public class MapEvent {
         }
     }
 
+    public int getOwnerIndex(){
+        return ownerIndex;
+    }
+
     public MapEvent(){
         for (int i = 100; i < 136; i++) {
             owners.addNewField(i, "null", "null");
@@ -113,6 +118,7 @@ public class MapEvent {
 
     public void checkEvent(String id, Player player, ArrayList<Player> players){
 
+        ownerIndex = -1;
         if(Integer.parseInt(id) >= 100 && Integer.parseInt(id) <= 135){
             if(owners.getOwnerById(Integer.parseInt(id)).equals("null")){
                 //TODO метод для покупки клетки и размещение на ней всякого
@@ -122,26 +128,7 @@ public class MapEvent {
                         if (player.getGold() >= 20){
                             player.removeGold(20);
                             owners.changeFieldOwner(Integer.parseInt(id), player.getName());
-//                            switch (index) {
-//                                case 0:
-//                                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.red);
-//                                    break;
-//                                case 1:
-//                                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.green);
-//                                    break;
-//                                case 2:
-//                                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.blue);
-//                                    break;
-//                                case 3:
-//                                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.yellow);
-//                                    break;
-//                                case 4:
-//                                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.pink);
-//                                    break;
-//                                case 5:
-//                                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.magenta);
-//                                    break;
-//                            }
+                            ownerIndex = Integer.parseInt(player.getName().substring(player.getName().length() - 1)) - 1;
                             answer = JOptionPane.showConfirmDialog(null, "Хотите сделать постройку?",null, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                             switch (answer){
                                 case (0):

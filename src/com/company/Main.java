@@ -312,6 +312,29 @@ public class Main {
         }
         //TODO сюда вкорячить метод на проверку клетки на владельца, чтото типа checkCell(player.get(x), player.get(y)
         mapEvent.checkEvent(tileMap[players.get(index).getX()][players.get(index).getY()], players.get(index), players);
+        if(mapEvent.getOwnerIndex() != -1){
+            switch (mapEvent.getOwnerIndex()) {
+                case 0:
+                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.red);
+                    break;
+                case 1:
+                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.green);
+                    break;
+                case 2:
+                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.blue);
+                    break;
+                case 3:
+                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.yellow);
+                    break;
+                case 4:
+                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.pink);
+                    break;
+                case 5:
+                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.magenta);
+                    break;
+            }
+        }
+
     }
 
     public static void startGame(){
@@ -358,6 +381,7 @@ public class Main {
                 Player player = new Player();
                 player.setStartPosition();
                 player.setName("player" + (i+1));
+                player.addGold(100);
                 if(i==0)panelPlayer0[player.getX()][player.getY()].setBackground(Color.red);
                 if(i==1)panelPlayer1[player.getX()][player.getY()].setBackground(Color.green);
                 if(i==2)panelPlayer2[player.getX()][player.getY()].setBackground(Color.blue);
@@ -372,6 +396,7 @@ public class Main {
                 Player player = new Player();
                 player.setStartPosition();
                 player.setName("player" + (i+1));
+                player.addGold(100);
                 if(i==0)panelPlayer0[player.getX()][player.getY()].setBackground(Color.red);
                 if(i==1)panelPlayer1[player.getX()][player.getY()].setBackground(Color.green);
                 if(i==2)panelPlayer2[player.getX()][player.getY()].setBackground(Color.blue);
@@ -387,6 +412,7 @@ public class Main {
                 Player player = new Player();
                 player.setStartPosition();
                 player.setName("player" + (i+1));
+                player.addGold(100);
                 if(i==0)panelPlayer0[player.getX()][player.getY()].setBackground(Color.red);
                 if(i==1)panelPlayer1[player.getX()][player.getY()].setBackground(Color.green);
                 if(i==2)panelPlayer2[player.getX()][player.getY()].setBackground(Color.blue);
@@ -403,6 +429,7 @@ public class Main {
                 Player player = new Player();
                 player.setStartPosition();
                 player.setName("player" + (i+1));
+                player.addGold(100);
                 if(i==0)panelPlayer0[player.getX()][player.getY()].setBackground(Color.red);
                 if(i==1)panelPlayer1[player.getX()][player.getY()].setBackground(Color.green);
                 if(i==2)panelPlayer2[player.getX()][player.getY()].setBackground(Color.blue);

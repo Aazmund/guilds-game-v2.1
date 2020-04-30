@@ -71,7 +71,7 @@ public class Main {
     private static JPanel[][] panelPlayer3 = new JPanel[11][11];
     private static JPanel[][] panelPlayer4 = new JPanel[11][11];
     private static JPanel[][] panelPlayer5 = new JPanel[11][11];
-
+    private static String fileImg = "graphics/emptyImg.png";
 
     private static ArrayList<Player> players = new ArrayList<>();
 
@@ -162,7 +162,45 @@ public class Main {
                     panels[a][b].setLayout(new BorderLayout());
                     panels[a][b].add(tabs[a][b], BorderLayout.NORTH);
                     try {
-                        BufferedImage myPicture = ImageIO.read(new File("graphics\\WhiteHarborPort.png"));
+                        switch (tileMap[a][b]){
+                            case "11":
+                                fileImg ="graphics/WhiteHarborPort.png";
+                                panels[a][b].setToolTipText("Белая Гавань");
+                                break;
+                            case "12":
+                                fileImg ="graphics/CastleBlackCreek.png";
+                                panels[a][b].setToolTipText("Замок Чёрная Заводь");
+                                break;
+                            case "22":
+                                fileImg ="graphics/WinterfellCastle.png";
+                                panels[a][b].setToolTipText("Замок Винтерфелл");
+                                break;
+                            case "21":
+                                //возможно это не Волчий Лес, а какая то лесопилка
+                                fileImg ="graphics/WolfForest.png";
+                                panels[a][b].setToolTipText("Волчий Лес");
+                                break;
+                            case "31":
+                                fileImg ="graphics/CasterlyRock.png";
+                                panels[a][b].setToolTipText("Утёс Кастерли");
+                                break;
+                            case "32":
+                                fileImg ="graphics/Lannisport.png";
+                                panels[a][b].setToolTipText("Ланниспорт");
+                                break;
+                            case "41":
+                                fileImg ="graphics/IronIslands.png";
+                                panels[a][b].setToolTipText("Железные Острова");
+                                break;
+                            case "42":
+                                fileImg ="graphics/Riverran.png";
+                                panels[a][b].setToolTipText("Риверран");
+                                break;
+                            default:
+                                fileImg = "graphics/emptyImg.png";
+                                break;
+                        }
+                        BufferedImage myPicture = ImageIO.read(new File(fileImg));
                         JLabel picLabel = new JLabel(new ImageIcon(myPicture));
                         picLabel.setBorder(BorderFactory.createLineBorder(Color.black,1));
                         panels[a][b].add(picLabel, BorderLayout.CENTER);
@@ -294,12 +332,14 @@ public class Main {
         System.setProperty("apple.laf.useScreenMenuBar", "true");
         System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Name");
 
+        MapGenerator mapGenerator = new MapGenerator();
+        mapGenerator.generateMap(tileMap);
+
         frameConfigurator();
 
         mainFrame.setVisible(true);
         twoPlayers.addActionListener(e -> {
-            MapGenerator mapGenerator = new MapGenerator();
-            mapGenerator.generateMap(tileMap);
+
             for (int i = 0; i < 2; i++) {
                 Player player = new Player();
                 player.setStartPosition();
@@ -313,8 +353,7 @@ public class Main {
         });
 
         threePlayers.addActionListener(e -> {
-            MapGenerator mapGenerator = new MapGenerator();
-            mapGenerator.generateMap(tileMap);
+
             for (int i = 0; i < 3; i++) {
                 Player player = new Player();
                 player.setStartPosition();
@@ -328,8 +367,7 @@ public class Main {
         });
 
         fourPlayers.addActionListener(e -> {
-            MapGenerator mapGenerator = new MapGenerator();
-            mapGenerator.generateMap(tileMap);
+
             for (int i = 0; i < 4; i++) {
                 Player player = new Player();
                 player.setStartPosition();
@@ -344,8 +382,7 @@ public class Main {
         });
 
         fivePlayers.addActionListener(e -> {
-            MapGenerator mapGenerator = new MapGenerator();
-            mapGenerator.generateMap(tileMap);
+
             for (int i = 0; i < 5; i++) {
                 Player player = new Player();
                 player.setStartPosition();
@@ -361,8 +398,7 @@ public class Main {
         });
 
         sixPlayers.addActionListener(e -> {
-            MapGenerator mapGenerator = new MapGenerator();
-            mapGenerator.generateMap(tileMap);
+
             for (int i = 0; i < 6; i++) {
                 Player player = new Player();
                 player.setStartPosition();

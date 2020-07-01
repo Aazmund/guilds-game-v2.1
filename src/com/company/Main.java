@@ -72,8 +72,9 @@ public class Main {
     private static JPanel[][] panelPlayer4 = new JPanel[11][11];
     private static JPanel[][] panelPlayer5 = new JPanel[11][11];
 
-
+    private static ScaleImg[][] scaleImg = new ScaleImg[11][11];
     private static String fileImg = "graphics/emptyImg.png";
+    private static JPanel Img [][] = new JPanel[11][11];
 
     private static ArrayList<Player> players = new ArrayList<>();
 
@@ -172,14 +173,14 @@ public class Main {
                                 fileImg ="graphics/CastleBlackCreek.png";
                                 panels[a][b].setToolTipText("Замок Чёрная Заводь");
                                 break;
-                            case "22":
-                                fileImg ="graphics/WinterfellCastle.png";
-                                panels[a][b].setToolTipText("Замок Винтерфелл");
-                                break;
                             case "21":
                                 //возможно это не Волчий Лес, а какая то лесопилка
                                 fileImg ="graphics/WolfForest.png";
                                 panels[a][b].setToolTipText("Волчий Лес");
+                                break;
+                            case "22":
+                                fileImg ="graphics/WinterfellCastle.png";
+                                panels[a][b].setToolTipText("Замок Винтерфелл");
                                 break;
                             case "31":
                                 fileImg ="graphics/CasterlyRock.png";
@@ -201,73 +202,18 @@ public class Main {
                                 fileImg ="graphics/BlackCastle.png";
                                 panels[a][b].setToolTipText("Чёрный Замок");
                                 break;
-                            default:
-                                fileImg = "graphics/emptyImg.png";
-                                break;
-                        }
-                        BufferedImage myPicture = ImageIO.read(new File(fileImg));
-                        JLabel picLabel = new JLabel(new ImageIcon(myPicture));
-                        picLabel.setBorder(BorderFactory.createLineBorder(Color.black,1));
-                        panels[a][b].add(picLabel, BorderLayout.CENTER);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                if (!tileMap[a][b].equals("*")) {
-                    panels[a][b].setLayout(new BorderLayout());
-                    panels[a][b].add(tabs[a][b], BorderLayout.NORTH);
-                    try {
-                        switch (tileMap[a][b]){
-                            case "11":
-                                fileImg ="graphics/WhiteHarborPort.png";
-                                panels[a][b].setToolTipText("Белая Гавань");
-                                break;
-                            case "12":
-                                fileImg ="graphics/CastleBlackCreek.png";
-                                panels[a][b].setToolTipText("Замок Чёрная Заводь");
-                                break;
-                            case "22":
-                                fileImg ="graphics/WinterfellCastle.png";
-                                panels[a][b].setToolTipText("Замок Винтерфелл");
-                                break;
-                            case "21":
-                                //возможно это не Волчий Лес, а какая то лесопилка
-                                fileImg ="graphics/WolfForest.png";
-                                panels[a][b].setToolTipText("Волчий Лес");
-                                break;
-                            case "31":
-                                fileImg ="graphics/CasterlyRock.png";
-                                panels[a][b].setToolTipText("Утёс Кастерли");
-                                break;
-                            case "32":
-                                fileImg ="graphics/Lannisport.png";
-                                panels[a][b].setToolTipText("Ланниспорт");
-                                break;
-                            case "41":
-                                fileImg ="graphics/IronIslands.png";
-                                panels[a][b].setToolTipText("Железные Острова");
-                                break;
-                            case "42":
-                                fileImg ="graphics/Riverran.png";
-                                panels[a][b].setToolTipText("Риверран");
-                                break;
-                            case "71":
-                                fileImg ="graphics/BlackCastle.png";
-                                panels[a][b].setToolTipText("Чёрный Замок");
+                            case "731":
+                                fileImg ="graphics/MoleTown.png";
+                                panels[a][b].setToolTipText("Кротовый Городок");
                                 break;
                             default:
                                 fileImg = "graphics/emptyImg.png";
                                 break;
                         }
-                        if(!tileMap[a][b].equals("11") && !tileMap[a][b].equals("12") && !tileMap[a][b].equals("21") && !tileMap[a][b].equals("22")
-                                && !tileMap[a][b].equals("31") && !tileMap[a][b].equals("32") && !tileMap[a][b].equals("41") && !tileMap[a][b].equals("42") && !tileMap[a][b].equals("71")){
-                            fileImg = "graphics/cloth.png";
-                        }
                         BufferedImage myPicture = ImageIO.read(new File(fileImg));
-                        JLabel picLabel = new JLabel(new ImageIcon(myPicture));
-                        picLabel.setBorder(BorderFactory.createLineBorder(Color.black,1));
-                        panels[a][b].add(picLabel, BorderLayout.CENTER);
+                        scaleImg[a][b] = new ScaleImg(myPicture);
+                        scaleImg[a][b].setBorder(BorderFactory.createLineBorder(Color.black,1));
+                        panels[a][b].add(scaleImg[a][b], BorderLayout.CENTER);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

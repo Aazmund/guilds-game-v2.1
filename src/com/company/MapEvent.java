@@ -143,6 +143,7 @@ public class MapEvent {
                 }
             }else if(owners.getOwnerById(Integer.parseInt(id)).equals(player.getName())){
                 //TODO рисуем форму с взаимодействием с клеткой
+                new CellAction(Integer.parseInt(id));
             }else {
                 //TODO платим штраф
                 JOptionPane.showMessageDialog(null, "Вы попали на чужую клетку. Заплатите штраф!");

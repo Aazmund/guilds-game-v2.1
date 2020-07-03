@@ -12,12 +12,10 @@ public class Owners {
     private String manufacture;
 
     public void addNewField(int fieldId, String owner, String manufacture){
-
         Owners owners = new Owners();
         owners.setFieldId(fieldId);
         owners.setOwner(owner);
         owners.setManufacture(manufacture);
-
         container.add(owners);
     }
 
@@ -83,5 +81,13 @@ public class Owners {
 
     public void setManufacture(String manufacture) {
         this.manufacture = manufacture;
+    }
+
+    public void setContainer(ArrayList<Owners> container) {
+        this.container = container;
+    }
+
+    public ArrayList<Owners> getContainer() {
+        return container;
     }
 }

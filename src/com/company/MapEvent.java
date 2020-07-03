@@ -44,7 +44,7 @@ public class MapEvent {
             setTitle("Взаимодействие с клеткой");
             Toolkit toolkit = Toolkit.getDefaultToolkit();
             Dimension dimension = toolkit.getScreenSize();
-            setBounds(dimension.width / 2 - 320, dimension.height / 2 - 90, 640, 180);
+            setBounds(dimension.width / 2 - 320, dimension.height / 2 - 90, 640, 280);
             setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
             Top_Panel.add(str);
@@ -54,14 +54,14 @@ public class MapEvent {
             Info_Panel.add(str3);
             Center_Panel.add(Info_Panel);
 
-            Button_Panel.setLayout(new GridLayout(1,6,5,0));
+            Button_Panel.setLayout(new GridLayout(4,2,5,0));
             Button_Panel.add(btn1);
-//            Button_Panel.add(btn2);
-//            Button_Panel.add(btn3);
-//            Button_Panel.add(btn4);
-//            Button_Panel.add(btn5);
-//            Button_Panel.add(btn6);
-//            Button_Panel.add(btn7);
+            Button_Panel.add(btn2);
+            Button_Panel.add(btn3);
+            Button_Panel.add(btn4);
+            Button_Panel.add(btn5);
+            Button_Panel.add(btn6);
+            Button_Panel.add(btn7);
             Bottom_Panel.add(Button_Panel);
 
             add(Top_Panel, BorderLayout.NORTH);
@@ -107,6 +107,10 @@ public class MapEvent {
 
     public int getOwnerIndex(){
         return ownerIndex;
+    }
+
+    public Owners getOwners() {
+        return owners;
     }
 
     public MapEvent(){

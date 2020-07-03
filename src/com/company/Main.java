@@ -74,7 +74,6 @@ public class Main {
 
     private static ScaleImg[][] scaleImg = new ScaleImg[11][11];
     private static String fileImg = "graphics/emptyImg.png";
-    private static JPanel Img [][] = new JPanel[11][11];
 
     private static ArrayList<Player> players = new ArrayList<>();
 
@@ -265,7 +264,6 @@ public class Main {
     }
 
     public static int showCubeGenerator(){
-
         new CubeDialog();
         System.out.println("Кубик выпал стороной " + result);
         actionLabelStr = "Кубик выпал стороной " + result;
@@ -273,6 +271,37 @@ public class Main {
 
         return result;
     }
+
+    public static void updateMap(){
+        Owners owners = new Owners();
+        owners.setContainer(mapEvent.getOwners().getContainer());
+        for (int i = 0; i < 11; i++){
+            for (int j = 0; j < 11; j++){
+                String cellId = tileMap[i][j];
+                if(!cellId.equals("*") && Integer.parseInt(cellId) >= 100 && Integer.parseInt(cellId) <= 135){
+                    String manufacture = owners.getManufactureById(Integer.parseInt(cellId));
+                    if (!manufacture.equals("null")){
+                        switch (manufacture){
+                            case ("Мельница"):
+                                try {
+                                    fileImg ="graphics/mill.png";
+                                    BufferedImage myPicture;
+                                    myPicture = ImageIO.read(new File(fileImg));
+                                    scaleImg[i][j] = new ScaleImg(myPicture);
+                                    scaleImg[i][j].setBorder(BorderFactory.createLineBorder(Color.black,1));
+                                    panels[i][j].add(scaleImg[0][2], BorderLayout.CENTER);
+
+                                    System.out.println("Мельница");
+                                    System.out.println("i - "+ i+ " j - "+ j);
+                                } catch (IOException e) {}
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 
     public static void game(int index){
         end_button.setText("Завершить ход");
@@ -325,22 +354,22 @@ public class Main {
         if(mapEvent.getOwnerIndex() != -1){
             switch (mapEvent.getOwnerIndex()) {
                 case 0:
-                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.red);
+                    scaleImg[players.get(index).getX()][players.get(index).getY()].setBackground(Color.red);
                     break;
                 case 1:
-                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.green);
+                    scaleImg[players.get(index).getX()][players.get(index).getY()].setBackground(Color.green);
                     break;
                 case 2:
-                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.blue);
+                    scaleImg[players.get(index).getX()][players.get(index).getY()].setBackground(Color.blue);
                     break;
                 case 3:
-                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.yellow);
+                    scaleImg[players.get(index).getX()][players.get(index).getY()].setBackground(Color.yellow);
                     break;
                 case 4:
-                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.pink);
+                    scaleImg[players.get(index).getX()][players.get(index).getY()].setBackground(Color.pink);
                     break;
                 case 5:
-                    panels[players.get(index).getX()][players.get(index).getY()].setBackground(Color.magenta);
+                    scaleImg[players.get(index).getX()][players.get(index).getY()].setBackground(Color.magenta);
                     break;
             }
         }
@@ -349,6 +378,7 @@ public class Main {
 
     public static void startGame(){
         end_button.addActionListener(e -> {
+            updateMap();
             if(index == players.size()){
                 index = 0;
                 game(index);

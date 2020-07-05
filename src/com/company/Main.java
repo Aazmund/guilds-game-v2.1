@@ -289,7 +289,7 @@ public class Main {
                                     myPicture = ImageIO.read(new File(fileImg));
                                     scaleImg[i][j] = new ScaleImg(myPicture);
                                     scaleImg[i][j].setBorder(BorderFactory.createLineBorder(Color.black,1));
-                                    panels[i][j].add(scaleImg[0][2], BorderLayout.CENTER);
+                                    panels[i][j].add(scaleImg[i][j], BorderLayout.CENTER);
 
                                     System.out.println("Мельница");
                                     System.out.println("i - "+ i+ " j - "+ j);

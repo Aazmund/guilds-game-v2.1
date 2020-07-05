@@ -7,7 +7,7 @@ public class Owners {
     private ArrayList<Owners> container = new ArrayList<>();
 
     private int fieldId;
-    private int share;
+    private int shareCount;
     private String owner;
     private String manufacture;
 
@@ -16,6 +16,7 @@ public class Owners {
         owners.setFieldId(fieldId);
         owners.setOwner(owner);
         owners.setManufacture(manufacture);
+        owners.setShareCount(0);
         container.add(owners);
     }
 
@@ -77,6 +78,43 @@ public class Owners {
                 break;
             }
         }
+    }
+
+    public void removeManufactureById(int id){
+        for (Owners owners : container) {
+            if (owners.getFieldId() == id) {
+                owners.setManufacture("null");
+                break;
+            }
+        }
+    }
+
+    public int getShareCount() {
+        return shareCount;
+    }
+
+    public void setShareCount(int shareCount) {
+        this.shareCount = shareCount;
+    }
+
+    public void addShareById(int id, int count){
+        for (Owners owners : container) {
+            if (owners.getFieldId() == id) {
+                owners.setShareCount(owners.getShareCount() + count);
+                break;
+            }
+        }
+    }
+
+    public int getShareById(int id){
+        int result = 0;
+        for (Owners owners : container) {
+            if (owners.getFieldId() == id) {
+                result = owners.getShareCount();
+                break;
+            }
+        }
+        return result;
     }
 
     public void setManufacture(String manufacture) {

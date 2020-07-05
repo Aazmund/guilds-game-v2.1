@@ -72,6 +72,7 @@ public class Main {
     private static JPanel[][] panelPlayer4 = new JPanel[11][11];
     private static JPanel[][] panelPlayer5 = new JPanel[11][11];
 
+    private static JPanel[][] Img = new JPanel[11][11];
     private static ScaleImg[][] scaleImg = new ScaleImg[11][11];
     private static String fileImg = "graphics/emptyImg.png";
 
@@ -140,6 +141,7 @@ public class Main {
             for (int b = 0; b < 11; b++) {
                 panels[a][b] = new JPanel();
                 tabs[a][b] = new JPanel();
+                Img[a][b] = new JPanel();
 
                 panelPlayer0[a][b] = new JPanel();
                 tabs[a][b].add(panelPlayer0[a][b]);
@@ -211,8 +213,10 @@ public class Main {
                         }
                         BufferedImage myPicture = ImageIO.read(new File(fileImg));
                         scaleImg[a][b] = new ScaleImg(myPicture);
-                        scaleImg[a][b].setBorder(BorderFactory.createLineBorder(Color.black,1));
-                        panels[a][b].add(scaleImg[a][b], BorderLayout.CENTER);
+                        Img[a][b].setLayout(new BorderLayout());
+                        Img[a][b].setBorder(BorderFactory.createLineBorder(Color.black,1));
+                        Img[a][b].add(scaleImg[a][b], BorderLayout.CENTER);
+                        panels[a][b].add(Img[a][b], BorderLayout.CENTER);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -284,15 +288,12 @@ public class Main {
                         switch (manufacture){
                             case ("Мельница"):
                                 try {
+                                    Img[i][j].remove(scaleImg[i][j]);
                                     fileImg ="graphics/mill.png";
                                     BufferedImage myPicture;
                                     myPicture = ImageIO.read(new File(fileImg));
                                     scaleImg[i][j] = new ScaleImg(myPicture);
-                                    scaleImg[i][j].setBorder(BorderFactory.createLineBorder(Color.black,1));
-                                    panels[i][j].add(scaleImg[i][j], BorderLayout.CENTER);
-
-                                    System.out.println("Мельница");
-                                    System.out.println("i - "+ i+ " j - "+ j);
+                                    Img[i][j].add(scaleImg[i][j]);
                                 } catch (IOException e) {}
                                 break;
                         }
@@ -354,22 +355,22 @@ public class Main {
         if(mapEvent.getOwnerIndex() != -1){
             switch (mapEvent.getOwnerIndex()) {
                 case 0:
-                    scaleImg[players.get(index).getX()][players.get(index).getY()].setBackground(Color.red);
+                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.red,1));
                     break;
                 case 1:
-                    scaleImg[players.get(index).getX()][players.get(index).getY()].setBackground(Color.green);
+                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.green,1));
                     break;
                 case 2:
-                    scaleImg[players.get(index).getX()][players.get(index).getY()].setBackground(Color.blue);
+                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.blue,1));
                     break;
                 case 3:
-                    scaleImg[players.get(index).getX()][players.get(index).getY()].setBackground(Color.yellow);
+                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.yellow,1));
                     break;
                 case 4:
-                    scaleImg[players.get(index).getX()][players.get(index).getY()].setBackground(Color.pink);
+                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.pink,1));
                     break;
                 case 5:
-                    scaleImg[players.get(index).getX()][players.get(index).getY()].setBackground(Color.magenta);
+                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.magenta,1));
                     break;
             }
         }

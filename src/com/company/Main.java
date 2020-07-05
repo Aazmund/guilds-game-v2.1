@@ -1,17 +1,12 @@
 package com.company;
 
 import javax.imageio.ImageIO;
-import javax.imageio.ImageReader;
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import java.util.ArrayList;
 
 public class Main {
@@ -195,17 +190,85 @@ public class Main {
                                 fileImg ="graphics/IronIslands.png";
                                 panels[a][b].setToolTipText("Железные Острова");
                                 break;
+                            case "51":
+                                fileImg ="graphics/SunPear.png";
+                                panels[a][b].setToolTipText("Солнечное Копьё");
+                                break;
+                            case "52":
+                                fileImg ="graphics/Highgarden.png";
+                                panels[a][b].setToolTipText("Хайгарден");
+                                break;
+                            case "53":
+                                fileImg ="graphics/OldTown.png";
+                                panels[a][b].setToolTipText("Старомест");
+                                break;
                             case "42":
                                 fileImg ="graphics/Riverran.png";
                                 panels[a][b].setToolTipText("Риверран");
+                                break;
+                            case "61":
+                                fileImg ="graphics/CastleDreydfourd.png";
+                                panels[a][b].setToolTipText("Замок Дрейдфурд");
+                                break;
+                            case "62":
+                                fileImg ="graphics/Tavern.png";
+                                panels[a][b].setToolTipText("Харчевня");
+                                break;
+                            case "63":
+                                fileImg ="graphics/StormReach.png";
+                                panels[a][b].setToolTipText("Штормовой Предел");
                                 break;
                             case "71":
                                 fileImg ="graphics/BlackCastle.png";
                                 panels[a][b].setToolTipText("Чёрный Замок");
                                 break;
+                            case "72":
+                                fileImg ="graphics/LittleFingerBrothel.png";
+                                panels[a][b].setToolTipText("Бордель Мизинца");
+                                break;
+                            case "73":
+                                fileImg ="graphics/RedCastle.png";
+                                panels[a][b].setToolTipText("Красный Замок");
+                                break;
+                            case "81":
+                                fileImg ="graphics/FairField.png";
+                                panels[a][b].setToolTipText("Ярмарочное поле");
+                                break;
+                            case "82":
+                                fileImg ="graphics/EagleNest.png";
+                                panels[a][b].setToolTipText("Орлиное Гнездо");
+                                break;
+                            case "83":
+                                fileImg ="graphics/TeaTown.png";
+                                panels[a][b].setToolTipText("Чаячий Городок");
+                                break;
+                            case "531":
+                                fileImg ="graphics/PrincesPass.png";
+                                panels[a][b].setToolTipText("Принцев Перевал");
+                                break;
+                            case "532":
+                                fileImg ="graphics/Citadel.png";
+                                panels[a][b].setToolTipText("Цитадель");
+                                break;
+                            case "631":
+                                fileImg ="graphics/MoatKailin.png";
+                                panels[a][b].setToolTipText("Ров Кейлин");
+                                break;
+                            case "632":
+                                fileImg ="graphics/DragonStone.png";
+                                panels[a][b].setToolTipText("Драконий Камень");
+                                break;
                             case "731":
                                 fileImg ="graphics/MoleTown.png";
                                 panels[a][b].setToolTipText("Кротовый Городок");
+                                break;
+                            case "732":
+                                fileImg ="graphics/GoldCloaks.png";
+                                panels[a][b].setToolTipText("Золотые Плащи");
+                                break;
+                            case "831":
+                                fileImg ="graphics/TwinTowers.png";
+                                panels[a][b].setToolTipText("Башни Близнецы");
                                 break;
                             default:
                                 fileImg = "graphics/emptyImg.png";
@@ -214,7 +277,7 @@ public class Main {
                         BufferedImage myPicture = ImageIO.read(new File(fileImg));
                         scaleImg[a][b] = new ScaleImg(myPicture);
                         Img[a][b].setLayout(new BorderLayout());
-                        Img[a][b].setBorder(BorderFactory.createLineBorder(Color.black,1));
+                        Img[a][b].setBorder(BorderFactory.createLineBorder(Color.black,2));
                         Img[a][b].add(scaleImg[a][b], BorderLayout.CENTER);
                         panels[a][b].add(Img[a][b], BorderLayout.CENTER);
                     } catch (IOException e) {
@@ -293,8 +356,60 @@ public class Main {
                                     BufferedImage myPicture;
                                     myPicture = ImageIO.read(new File(fileImg));
                                     scaleImg[i][j] = new ScaleImg(myPicture);
-                                    Img[i][j].add(scaleImg[i][j]);
+                                    Img[i][j].add(scaleImg[i][j], BorderLayout.CENTER);
                                 } catch (IOException e) {}
+                                break;
+                            case ("Ферма"):
+                                try {
+                                    Img[i][j].remove(scaleImg[i][j]);
+                                    fileImg ="graphics/farm.png";
+                                    BufferedImage myPicture;
+                                    myPicture = ImageIO.read(new File(fileImg));
+                                    scaleImg[i][j] = new ScaleImg(myPicture);
+                                    Img[i][j].add(scaleImg[i][j], BorderLayout.CENTER);
+                                } catch (IOException e) {}
+                                break;
+                            case ("Керамика"):
+                                try {
+                                    Img[i][j].remove(scaleImg[i][j]);
+                                    fileImg ="graphics/ceramic.png";
+                                    BufferedImage myPicture;
+                                    myPicture = ImageIO.read(new File(fileImg));
+                                    scaleImg[i][j] = new ScaleImg(myPicture);
+                                    Img[i][j].add(scaleImg[i][j], BorderLayout.CENTER);
+                                } catch (IOException e) {}
+                                break;
+                            case ("Сукно"):
+                                try {
+                                    Img[i][j].remove(scaleImg[i][j]);
+                                    fileImg ="graphics/cloth.png";
+                                    BufferedImage myPicture;
+                                    myPicture = ImageIO.read(new File(fileImg));
+                                    scaleImg[i][j] = new ScaleImg(myPicture);
+                                    Img[i][j].add(scaleImg[i][j], BorderLayout.CENTER);
+                                } catch (IOException e) {}
+                                break;
+                            case ("Виноделие"):
+                                try {
+                                    Img[i][j].remove(scaleImg[i][j]);
+                                    fileImg ="graphics/winemaking.png";
+                                    BufferedImage myPicture;
+                                    myPicture = ImageIO.read(new File(fileImg));
+                                    scaleImg[i][j] = new ScaleImg(myPicture);
+                                    Img[i][j].add(scaleImg[i][j], BorderLayout.CENTER);
+                                } catch (IOException e) {}
+                                break;
+                            case ("Оружие"):
+                                try {
+                                    Img[i][j].remove(scaleImg[i][j]);
+                                    fileImg ="graphics/gun.png";
+                                    BufferedImage myPicture;
+                                    myPicture = ImageIO.read(new File(fileImg));
+                                    scaleImg[i][j] = new ScaleImg(myPicture);
+                                    Img[i][j].add(scaleImg[i][j], BorderLayout.CENTER);
+                                } catch (IOException e) {}
+                                break;
+                            default:
                                 break;
                         }
                     }
@@ -355,26 +470,25 @@ public class Main {
         if(mapEvent.getOwnerIndex() != -1){
             switch (mapEvent.getOwnerIndex()) {
                 case 0:
-                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.red,1));
+                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.red,2));
                     break;
                 case 1:
-                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.green,1));
+                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.green,2));
                     break;
                 case 2:
-                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.blue,1));
+                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.blue,2));
                     break;
                 case 3:
-                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.yellow,1));
+                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.yellow,2));
                     break;
                 case 4:
-                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.pink,1));
+                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.pink,2));
                     break;
                 case 5:
-                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.magenta,1));
+                    Img[players.get(index).getX()][players.get(index).getY()].setBorder(BorderFactory.createLineBorder(Color.magenta,2));
                     break;
             }
         }
-
     }
 
     public static void startGame(){

@@ -7,7 +7,6 @@ import java.awt.*;
 import java.util.Random;
 
 public class WhiteHarbor {
-    private int attempt = 0;
     private boolean resolution = false;
     public WhiteHarbor(Player player){
         JFrame whiteHarborFrame = new JFrame("Порт Белая Гавань");
@@ -44,12 +43,12 @@ public class WhiteHarbor {
         });
 
         Start.addActionListener(e -> {
-            if (attempt < 3){
+            if (player.getAttempt() < 3){
                 Center_Panel.remove(buyHoursBtn);
                 whiteHarborFrame.pack();
                 whiteHarborFrame.setBounds(dimension.width / 2 - 100, dimension.height / 2 - 100, 400, 300);
-                attempt++;
-                String str = "Ваши попытки: " + attempt + "/3";
+                player.addAttempt();
+                String str = "Ваши попытки: " + player.getAttempt() + "/3";
                 attempts.setText(str);
                 Random random = new Random();
                 if (random.nextInt(6) + 1 == 6){
@@ -60,6 +59,15 @@ public class WhiteHarbor {
                 }else{
                     message.setText("Вы получили лошадь!");
                     player.addHorse(1);
+                    int answer = JOptionPane.showConfirmDialog(null, "Выбудете продолжать работать?",null, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                    if (answer == 0){
+                        player.setMobile(false);
+                        whiteHarborFrame.dispose();
+                    }else{
+                        Center_Panel.remove(Start);
+                        player.resetAttempt();
+                        player.setMobile(true);
+                    }
                 }
             }else{
                 message.setText("Закончились попытки");

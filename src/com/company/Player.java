@@ -15,6 +15,7 @@ public class Player {
     private short[] outerList = {0,0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,1,10,2,10,3,10,4,10,5,10,6,10,7,10,8,10,9,10,10,10,10,9,10,8,10,7,10,6,10,5,10,4,10,3,10,2,10,1,10,0,9,0,8,0,7,0,6,0,5,0,4,0,3,0,2,0,1,0};
 //    private String type;
     private String name;
+    private int attempt = 0;
     private int gold;
     private int forest;
     private int sheep;
@@ -475,6 +476,22 @@ public class Player {
     public void getCurrentPosition(){
         System.out.println("x "+ x);
         System.out.println("y "+ y);
+    }
+
+    public int getAttempt() {
+        return attempt;
+    }
+
+    public void setAttempt(int attempt) {
+        this.attempt = attempt;
+    }
+
+    public void addAttempt() {
+        this.attempt++;
+    }
+
+    public void resetAttempt(){
+        this.attempt = 0;
     }
 
     public int getX() {

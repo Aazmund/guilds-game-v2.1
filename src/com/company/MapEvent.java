@@ -189,38 +189,47 @@ public class MapEvent {
         }else{
             switch (id){
                 case("11"):
-                    whiteHarbor(player);
+                    new WhiteHarbor(player);
                     //TODO расчет пропуска хода (аналог resolution для player?)
                     break;
 
                 case("21"):
+                    new WhiteHarbor(player);
                     break;
 
                 case("31"):
+                    new WhiteHarbor(player);
                     break;
 
                 case("41"):
+                    new WhiteHarbor(player);
                     break;
 
                 case("12"):
+                    new WhiteHarbor(player);
                     break;
 
                 case("22"):
+                    new WhiteHarbor(player);
                     break;
 
                 case("32"):
+                    new WhiteHarbor(player);
                     break;
 
                 case("42"):
+                    new WhiteHarbor(player);
                     break;
-            }
-        }
-    }
 
-    private void whiteHarbor(Player player){
-        int answer = JOptionPane.showConfirmDialog(null, "Зайти в Порт Белая Гавань?",null, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (answer == 0){
-            new WhiteHarbor(player);
+                case("71"):
+                    new WhiteHarbor(player);
+                    break;
+
+                case("731"):
+                    new WhiteHarbor(player);
+                    break;
+
+            }
         }
     }
 

@@ -270,6 +270,10 @@ public class Main {
                                 fileImg ="graphics/TwinTowers.png";
                                 panels[a][b].setToolTipText("Башни Близнецы");
                                 break;
+                            case "832":
+                                fileImg = "graphics/wildHighlanders.png";
+                                panels[a][b].setToolTipText("Дикие Горцы");
+                                break;
                             default:
                                 fileImg = "graphics/emptyImg.png";
                                 break;
@@ -496,11 +500,24 @@ public class Main {
             updateMap();
             if(index == players.size()){
                 index = 0;
-                game(index);
-                index++;
+                if(!players.get(index).getMobile()){
+                    players.get(index).setMobile(true);
+                    index++;
+                    startGame();
+                }else{
+                    game(index);
+                    index++;
+                }
+
             }else{
-                game(index);
-                index++;
+                if(!players.get(index).getMobile()){
+                    players.get(index).setMobile(true);
+                    index++;
+                    startGame();
+                }else{
+                    game(index);
+                    index++;
+                }
             }
         });
     }

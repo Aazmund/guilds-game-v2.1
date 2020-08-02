@@ -64,7 +64,7 @@ public class WhiteHarbor {
                         player.setMobile(false);
                         whiteHarborFrame.dispose();
                     }else{
-                        Center_Panel.remove(Start);
+                        whiteHarborFrame.dispose();
                         player.resetAttempt();
                         player.setMobile(true);
                     }

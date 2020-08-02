@@ -22,7 +22,7 @@ public class ScaleImg extends JPanel  {
                     if (size.width > size.height) {
 //                        size.width = -1;
                     } else {
-                        size.height = -1;
+                        size.height = -64;
                     }
                     scaled = img.getScaledInstance(size.width, size.height, java.awt.Image.SCALE_SMOOTH);
                 }

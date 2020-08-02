@@ -25,16 +25,30 @@ public class Main {
             {"9", "9", "9", "9", "9", "9", "9", "9", "9", "9", "9"}
     };
     private static String actionLabelStr = "";
-    private static String playerNameStr = ""; // "Игрок 1";
-    private static String playerGoldStr = ""; //""Золото: 500";
-    private static String playerSheepStr = ""; //""Овцы: 10";
-    private static String playerLogStr = ""; //'""Брёвна: 50";
+    private static String playerNameStr = ""; //"Игрок 1"
+    private static String playerGoldStr = ""; //"Золото: 500"
+    private static String playerSheepStr = ""; //"Овцы: 10"
+    private static String playerLogStr = ""; //"Брёвна: 50"
+    private static String playerFarmStr = ""; //"Ферма: 0"
+    private static String playerMillStr = ""; //"Мельница: 0"
+
+    private static String stockCeramicStr = ""; //Акция Керамики
+    private static String stockClothStr = ""; //Акция Одежды
+    private static String stockWinemakingStr = ""; //Акция Виноделия
+    private static String stockGunStr = ""; //Акция Оружия
+
 
     private static JLabel playerName = (new JLabel(playerNameStr));
     private static JLabel playerGold = (new JLabel(playerGoldStr));
     private static JLabel playerSheep =(new JLabel(playerSheepStr));
     private static JLabel playerLog = (new JLabel(playerLogStr));
-    private static  JLabel actionLabel = (new JLabel(actionLabelStr));
+    private static JLabel playerFarm = (new JLabel(playerFarmStr));
+    private static JLabel playerMill = (new JLabel(playerMillStr));
+    private static JLabel stockCeramic = (new JLabel(stockCeramicStr));
+    private static JLabel stockCloth = (new JLabel(stockClothStr));
+    private static JLabel stockWinemaking = (new JLabel(stockWinemakingStr));
+    private static JLabel stockGun = (new JLabel(stockGunStr));
+    private static JLabel actionLabel = (new JLabel(actionLabelStr));
 
     private static JPanel[][] panels = new JPanel[11][11];
     private static JButton end_button = new JButton("Начать игру");
@@ -311,11 +325,18 @@ public class Main {
 
         buttonAction.add(end_button);
 
-        playerWindow.setLayout(new GridLayout(4, 1, 5, 5));
+        playerWindow.setLayout(new GridLayout(8, 1, 5, 5));
         playerWindow.add(playerName);
         playerWindow.add(playerGold);
         playerWindow.add(playerSheep);
         playerWindow.add(playerLog);
+        playerWindow.add(playerFarm);
+        playerWindow.add(playerMill);
+        playerWindow.add(stockCeramic);
+        playerWindow.add(stockCloth);
+        playerWindow.add(stockWinemaking);
+        playerWindow.add(stockGun);
+
 
         mainFrame.add(panel);
         mainFrame.revalidate();
@@ -326,11 +347,26 @@ public class Main {
         playerGoldStr = "Золото " + players.get(index).getGold();
         playerSheepStr = "Овцы " + players.get(index).getSheep();
         playerLogStr = "Дерево " + players.get(index).getForest();
+        playerFarmStr = "Ферма " ;//+ players.get(index).getFarm();
+        playerMillStr = "Мельница " ;//+ players.get(index).getMill();
+
+        stockCeramicStr = "Керамика ";
+        stockClothStr = "Одежда ";
+        stockWinemakingStr = "Виноделие ";
+        stockGunStr = "Оружие ";
 
         playerName.setText(playerNameStr);
         playerGold.setText(playerGoldStr);
         playerSheep.setText(playerSheepStr);
         playerLog.setText(playerLogStr);
+        playerFarm.setText(playerFarmStr);
+        playerMill.setText(playerMillStr);
+
+        stockCeramic.setText(stockCeramicStr);
+        stockCloth.setText(stockClothStr);
+        stockWinemaking.setText(stockWinemakingStr);
+        stockGun.setText(stockGunStr);
+
 
     }
 

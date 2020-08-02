@@ -515,7 +515,6 @@ public class Main {
                     game(index);
                     index++;
                 }
-
             }else{
                 if(!players.get(index).getMobile()){
                     players.get(index).setMobile(true);

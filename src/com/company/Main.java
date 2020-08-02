@@ -503,7 +503,14 @@ public class Main {
                 if(!players.get(index).getMobile()){
                     players.get(index).setMobile(true);
                     index++;
-                    startGame();
+                    if (index == players.size()){
+                        index = 0;
+                        game(index);
+                        index++;
+                    }else{
+                        game(index);
+                        index++;
+                    }
                 }else{
                     game(index);
                     index++;
@@ -513,7 +520,14 @@ public class Main {
                 if(!players.get(index).getMobile()){
                     players.get(index).setMobile(true);
                     index++;
-                    startGame();
+                    if (index == players.size()){
+                        index = 0;
+                        game(index);
+                        index++;
+                    }else{
+                        game(index);
+                        index++;
+                    }
                 }else{
                     game(index);
                     index++;

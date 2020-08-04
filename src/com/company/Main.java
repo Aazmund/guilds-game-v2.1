@@ -337,7 +337,6 @@ public class Main {
         playerWindow.add(stockWinemaking);
         playerWindow.add(stockGun);
 
-
         mainFrame.add(panel);
         mainFrame.revalidate();
     }
@@ -366,8 +365,6 @@ public class Main {
         stockCloth.setText(stockClothStr);
         stockWinemaking.setText(stockWinemakingStr);
         stockGun.setText(stockGunStr);
-
-
     }
 
     public static int showCubeGenerator(){
@@ -531,43 +528,26 @@ public class Main {
         }
     }
 
+    public static void indexChecker(int index){
+        if(index >= players.size()){
+            index = 0;
+            indexChecker(index);
+        }else{
+            if (players.get(index).getMobile()){
+                game(index);
+            }else{
+                players.get(index).setMobile(true);
+                index++;
+                indexChecker(index);
+            }
+        }
+    }
+
     public static void startGame(){
         end_button.addActionListener(e -> {
             updateMap();
-            if(index == players.size()){
-                index = 0;
-                if(!players.get(index).getMobile()){
-                    players.get(index).setMobile(true);
-                    index++;
-                    if (index == players.size()){
-                        index = 0;
-                        game(index);
-                        index++;
-                    }else{
-                        game(index);
-                        index++;
-                    }
-                }else{
-                    game(index);
-                    index++;
-                }
-            }else{
-                if(!players.get(index).getMobile()){
-                    players.get(index).setMobile(true);
-                    index++;
-                    if (index == players.size()){
-                        index = 0;
-                        game(index);
-                        index++;
-                    }else{
-                        game(index);
-                        index++;
-                    }
-                }else{
-                    game(index);
-                    index++;
-                }
-            }
+            indexChecker(index);
+            index++;
         });
     }
 

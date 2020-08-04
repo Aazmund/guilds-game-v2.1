@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.specCell.WhiteHarbor;
+import com.company.specCell.WolfForest;
 
 import javax.swing.*;
 import java.awt.*;
@@ -194,7 +195,7 @@ public class MapEvent {
                     break;
 
                 case("21"):
-                    new WhiteHarbor(player);
+                    new WolfForest(player);
                     break;
 
                 case("31"):

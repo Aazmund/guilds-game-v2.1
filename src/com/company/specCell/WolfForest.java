@@ -6,20 +6,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
-public class WhiteHarbor {
+public class WolfForest {
     private boolean resolution = false;
-    public WhiteHarbor(Player player){
-        JFrame whiteHarborFrame = new JFrame("Порт Белая Гавань");
-        whiteHarborFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    public WolfForest(Player player){
+        JFrame wolfForestFrame = new JFrame("Волчий Лес");
+        wolfForestFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension dimension = toolkit.getScreenSize();
-        whiteHarborFrame.setBounds(dimension.width / 2 - 100, dimension.height / 2 - 100, 400, 300);
+        wolfForestFrame.setBounds(dimension.width / 2 - 100, dimension.height / 2 - 100, 400, 300);
 
         JPanel Top_Panel = new JPanel();
         JPanel Center_Panel = new JPanel();
         JPanel Bottom_Panel = new JPanel(new GridLayout(3,1));
 
-        whiteHarborFrame.setLayout(new GridLayout(4,1));
+        wolfForestFrame.setLayout(new GridLayout(4,1));
 
         JLabel attempts = new JLabel("");
         JLabel playerName = new JLabel("На клетке: " + player.getName());
@@ -28,9 +28,9 @@ public class WhiteHarbor {
 
         JButton Start = new JButton("Начать работу");
         JButton end = new JButton("Выйти");
-        JButton buyHoursBtn = new JButton("Купить лошадь");
+        JButton buyForestBtn = new JButton("Купить лес");
         Center_Panel.add(Start);
-        Center_Panel.add(buyHoursBtn);
+        Center_Panel.add(buyForestBtn);
 
         JLabel result = new JLabel("Результат:");
         Bottom_Panel.add(result);
@@ -40,15 +40,15 @@ public class WhiteHarbor {
         Bottom_Panel.add(end);
 
         end.addActionListener(e -> {
-            whiteHarborFrame.setVisible(false);
-            whiteHarborFrame.dispose();
+            wolfForestFrame.setVisible(false);
+            wolfForestFrame.dispose();
         });
 
         Start.addActionListener(e -> {
             if (player.getAttempt() < 3){
-                Center_Panel.remove(buyHoursBtn);
-                whiteHarborFrame.pack();
-                whiteHarborFrame.setBounds(dimension.width / 2 - 100, dimension.height / 2 - 100, 400, 300);
+                Center_Panel.remove(buyForestBtn);
+                wolfForestFrame.pack();
+                wolfForestFrame.setBounds(dimension.width / 2 - 100, dimension.height / 2 - 100, 400, 300);
                 player.addAttempt();
                 String str = "Ваши попытки: " + player.getAttempt() + "/3";
                 attempts.setText(str);
@@ -59,14 +59,14 @@ public class WhiteHarbor {
 
                     //TODO перевод игрока в клетку с цитаделью
                 }else{
-                    message.setText("Вы получили лошадь!");
-                    player.addHorse(1);
+                    message.setText("Вы получили лес!");
+                    player.addForest(1);
                     int answer = JOptionPane.showConfirmDialog(null, "Выбудете продолжать работать?",null, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                     if (answer == 0){
                         player.setMobile(false);
-                        whiteHarborFrame.dispose();
+                        wolfForestFrame.dispose();
                     }else{
-                        whiteHarborFrame.dispose();
+                        wolfForestFrame.dispose();
                         player.resetAttempt();
                         player.setMobile(true);
                     }
@@ -77,12 +77,12 @@ public class WhiteHarbor {
 
         });
 
-        buyHoursBtn.addActionListener(e -> {
+        buyForestBtn.addActionListener(e -> {
             if (resolution){
                 if (player.getGold() >= 50){
                     player.removeGold(50);
-                    player.addHorse(1);
-                    message.setText("Вы купили лошадь");
+                    player.addForest(1);
+                    message.setText("Вы купили лес");
                 }else{
                     message.setText("У вас нет денег для покупки!");
                 }
@@ -92,18 +92,18 @@ public class WhiteHarbor {
                     resolution = true;
                     message.setText("Вход оплачен");
                     Center_Panel.remove(Start);
-                    whiteHarborFrame.pack();
-                    whiteHarborFrame.setBounds(dimension.width / 2 - 100, dimension.height / 2 - 100, 400, 300);
+                    wolfForestFrame.pack();
+                    wolfForestFrame.setBounds(dimension.width / 2 - 100, dimension.height / 2 - 100, 400, 300);
                 }else{
                     message.setText("У вас нет денег для оплаты входа!");
                 }
             }
         });
 
-        whiteHarborFrame.add(Top_Panel, BorderLayout.NORTH);
-        whiteHarborFrame.add(Center_Panel, BorderLayout.CENTER);
-        whiteHarborFrame.add(Bottom_Panel, BorderLayout.SOUTH);
+        wolfForestFrame.add(Top_Panel, BorderLayout.NORTH);
+        wolfForestFrame.add(Center_Panel, BorderLayout.CENTER);
+        wolfForestFrame.add(Bottom_Panel, BorderLayout.SOUTH);
 
-        whiteHarborFrame.setVisible(true);
+        wolfForestFrame.setVisible(true);
     }
 }

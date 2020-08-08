@@ -19,12 +19,13 @@ public class ScaleImg extends JPanel  {
                 @Override
                 public void componentResized(ComponentEvent e) {
                     Dimension size = getSize();
-                    if (size.width > size.height) {
-//                        size.width = -1;
-                    } else {
-                        size.height = -64;
-                    }
-                    scaled = img.getScaledInstance(size.width, size.height, java.awt.Image.SCALE_SMOOTH);
+//                    if (size.width > size.height) {
+////                        size.width = -1;
+//                    } else {
+//                        size.height = -64;
+//                    }
+//                    scaled = img.getScaledInstance(size.width, size.height, java.awt.Image.SCALE_SMOOTH);
+                    scaled = img;
                 }
 
             });

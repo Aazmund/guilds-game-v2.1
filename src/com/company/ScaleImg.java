@@ -18,7 +18,7 @@ public class ScaleImg extends JPanel  {
 
                 @Override
                 public void componentResized(ComponentEvent e) {
-                    Dimension size = getSize();
+//                    Dimension size = getSize();
 //                    if (size.width > size.height) {
 ////                        size.width = -1;
 //                    } else {

@@ -532,12 +532,11 @@ public class Main {
         if(index >= players.size()){
             index = 0;
             indexChecker(index);
-        }else{
-            if (!players.get(index).getMobile()){
-                players.get(index).setMobile(true);
-                index++;
-                indexChecker(index);
-            }
+        }
+        if (!players.get(index).getMobile()){
+            players.get(index).setMobile(true);
+            index++;
+            indexChecker(index);
         }
         return index;
     }

@@ -528,25 +528,25 @@ public class Main {
         }
     }
 
-    public static void indexChecker(int index){
+    public static int indexChecker(int index){
         if(index >= players.size()){
             index = 0;
             indexChecker(index);
         }else{
-            if (players.get(index).getMobile()){
-                game(index);
-            }else{
+            if (!players.get(index).getMobile()){
                 players.get(index).setMobile(true);
                 index++;
                 indexChecker(index);
             }
         }
+        return index;
     }
 
     public static void startGame(){
         end_button.addActionListener(e -> {
             updateMap();
-            indexChecker(index);
+            index = indexChecker(index);
+            game(index);
             index++;
         });
     }

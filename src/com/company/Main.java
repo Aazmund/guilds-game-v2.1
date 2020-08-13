@@ -460,7 +460,12 @@ public class Main {
         end_button.setText("Завершить ход");
         System.out.println("Player " + index);
         showPlayerInfo(index);
-        int cubeScore = showCubeGenerator();
+        int cubeScore;
+        if(players.get(index).getMobile()){
+            cubeScore = showCubeGenerator();
+        }else{
+            cubeScore = 0;
+        }
         switch (index) {
             case 0:
                 panelPlayer0[players.get(index).getX()][players.get(index).getY()].setBackground(null);
@@ -481,7 +486,14 @@ public class Main {
                 panelPlayer5[players.get(index).getX()][players.get(index).getY()].setBackground(null);
                 break;
         }
-        players.get(index).move(cubeScore);
+
+        if(players.get(index).getMobile()){
+            players.get(index).move(cubeScore);
+        }else{
+            players.get(index).setMobile(true);
+            players.get(index).move(0);
+        }
+
         switch (index) {
             case 0:
                 panelPlayer0[players.get(index).getX()][players.get(index).getY()].setBackground(Color.red);
@@ -533,18 +545,26 @@ public class Main {
             index = 0;
             indexChecker(index);
         }
-        if (!players.get(index).getMobile()){
-            players.get(index).setMobile(true);
-            index++;
-            indexChecker(index);
-        }
         return index;
     }
 
+//    public static int indexChecker(int index){
+//        if(index >= players.size()){
+//            index = 0;
+//            indexChecker(index);
+//        }
+//        if (!players.get(index).getMobile()){
+//            players.get(index).setMobile(true);
+//            index++;
+//            indexChecker(index);
+//        }
+//        return index;
+//    }
+
     public static void startGame(){
         end_button.addActionListener(e -> {
-            updateMap();
             index = indexChecker(index);
+            updateMap();
             game(index);
             index++;
         });

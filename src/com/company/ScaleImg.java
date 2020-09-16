@@ -11,18 +11,29 @@ public class ScaleImg extends JPanel  {
         private BufferedImage img;
         private Image scaled;
 
-        public ScaleImg(BufferedImage img) {
+        public ScaleImg(BufferedImage img, int h, int w) {
             this.img = img;
             this.scaled = img;
             addComponentListener(new ComponentAdapter() {
 
+//                @Override
+//                public void componentResized(ComponentEvent e) {
+//                    Dimension size = getSize();
+//                    if (size.width > size.height) {
+//////                        size.width = -1;
+//                    } else {
+//                        size.height = -64;
+//                    }
+//                    scaled = img.getScaledInstance(size.width, size.height, Image.SCALE_FAST);
+//                }
+
                 @Override
                 public void componentResized(ComponentEvent e) {
                     Dimension size = getSize();
-                    if (size.width > size.height) {
-////                        size.width = -1;
-                    } else {
-                        size.height = -64;
+                    if (size.width > 0) {
+                        size.width = w;
+                        size.height = h;
+
                     }
                     scaled = img.getScaledInstance(size.width, size.height, Image.SCALE_FAST);
                 }

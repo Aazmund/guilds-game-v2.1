@@ -83,6 +83,7 @@ public class Main {
 
     private static JPanel[][] Img = new JPanel[11][11];
     private static ScaleImg[][] scaleImg = new ScaleImg[11][11];
+    private static JPanel[][] newImage = new JPanel[11][11];
     private static String fileImg = "graphics/emptyImg.png";
 
     private static ArrayList<Player> players = new ArrayList<>();
@@ -294,21 +295,23 @@ public class Main {
                         }
                         BufferedImage myPicture = ImageIO.read(new File(fileImg));
 
-                        BufferedImage scaleImage = new BufferedImage(dimension.width/13, dimension.height/20, 2);
-                        Graphics g = scaleImage.createGraphics();
-                        g.drawImage(myPicture, 0, 0, dimension.width/13, dimension.height/20,  null);
+                        BufferedImage scaleImageTEST = new BufferedImage(dimension.width/12, dimension.height/21, 2);
+                        Graphics g = scaleImageTEST.createGraphics();
+                        g.drawImage(myPicture, 0, 0, dimension.width/12, dimension.height/21,  null);
                         g.dispose();
 
                         //второй метод, но долгий
 //                        ImageIcon icon = new ImageIcon(fileImg);
-//                        Image scaleImage = icon.getImage().getScaledInstance(dimension.width/13, dimension.height/20, Image.SCALE_SMOOTH);
+//                        Image scaleImageTEST = icon.getImage().getScaledInstance(dimension.width/13, dimension.height/20, Image.SCALE_SMOOTH);
 
 
-                        JLabel picLabel = new JLabel(new ImageIcon(scaleImage));
+                        JLabel picLabel = new JLabel(new ImageIcon(scaleImageTEST));
+                        newImage[a][b] = new JPanel();
+                        newImage[a][b].add(picLabel);
 //                        scaleImg[a][b] = new ScaleImg(myPicture);
                         Img[a][b].setLayout(new BorderLayout());
                         Img[a][b].setBorder(BorderFactory.createLineBorder(Color.black,2));
-                        Img[a][b].add(picLabel);
+                        Img[a][b].add(newImage[a][b], BorderLayout.CENTER);
                         panels[a][b].add(Img[a][b], BorderLayout.CENTER);
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -400,7 +403,8 @@ public class Main {
                         switch (manufacture){
                             case ("Мельница"):
                                 try {
-                                    Img[i][j].remove(scaleImg[i][j]);
+//                                    Img[i][j].remove(scaleImg[i][j]);
+                                    Img[i][j].remove(newImage[i][j]);
                                     fileImg ="graphics/mill.png";
                                     BufferedImage myPicture;
                                     myPicture = ImageIO.read(new File(fileImg));
@@ -410,7 +414,8 @@ public class Main {
                                 break;
                             case ("Ферма"):
                                 try {
-                                    Img[i][j].remove(scaleImg[i][j]);
+//                                    Img[i][j].remove(scaleImg[i][j]);
+                                    Img[i][j].remove(newImage[i][j]);
                                     fileImg ="graphics/farm.png";
                                     BufferedImage myPicture;
                                     myPicture = ImageIO.read(new File(fileImg));
@@ -420,7 +425,8 @@ public class Main {
                                 break;
                             case ("Керамика"):
                                 try {
-                                    Img[i][j].remove(scaleImg[i][j]);
+//                                    Img[i][j].remove(scaleImg[i][j]);
+                                    Img[i][j].remove(newImage[i][j]);
                                     fileImg ="graphics/ceramic.png";
                                     BufferedImage myPicture;
                                     myPicture = ImageIO.read(new File(fileImg));
@@ -430,7 +436,8 @@ public class Main {
                                 break;
                             case ("Сукно"):
                                 try {
-                                    Img[i][j].remove(scaleImg[i][j]);
+//                                    Img[i][j].remove(scaleImg[i][j]);
+                                    Img[i][j].remove(newImage[i][j]);
                                     fileImg ="graphics/cloth.png";
                                     BufferedImage myPicture;
                                     myPicture = ImageIO.read(new File(fileImg));
@@ -440,7 +447,8 @@ public class Main {
                                 break;
                             case ("Виноделие"):
                                 try {
-                                    Img[i][j].remove(scaleImg[i][j]);
+//                                    Img[i][j].remove(scaleImg[i][j]);
+                                    Img[i][j].remove(newImage[i][j]);
                                     fileImg ="graphics/winemaking.png";
                                     BufferedImage myPicture;
                                     myPicture = ImageIO.read(new File(fileImg));
@@ -450,7 +458,8 @@ public class Main {
                                 break;
                             case ("Оружие"):
                                 try {
-                                    Img[i][j].remove(scaleImg[i][j]);
+//                                    Img[i][j].remove(scaleImg[i][j]);
+                                    Img[i][j].remove(newImage[i][j]);
                                     fileImg ="graphics/gun.png";
                                     BufferedImage myPicture;
                                     myPicture = ImageIO.read(new File(fileImg));

@@ -26,7 +26,7 @@ public class Player {
     private int cloth;
     private int winemaking;
     private int gun;
-
+    private int ore;
 
     public Player(){
 
@@ -103,6 +103,18 @@ public class Player {
 
     public void addSheep(int sheep){
         this.sheep += sheep;
+    }
+
+    public int getOre() {
+        return ore;
+    }
+
+    public void setOre(int ore) {
+        this.ore = ore;
+    }
+
+    public void addOre(int ore){
+        this.ore += 1;
     }
 
     private void searchOuterIndex(){

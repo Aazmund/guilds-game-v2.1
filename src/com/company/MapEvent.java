@@ -1,7 +1,6 @@
 package com.company;
 
-import com.company.specCell.WhiteHarbor;
-import com.company.specCell.WolfForest;
+import com.company.specCell.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -191,7 +190,6 @@ public class MapEvent {
             switch (id){
                 case("11"):
                     new WhiteHarbor(player);
-                    //TODO расчет пропуска хода (аналог resolution для player?)
                     break;
 
                 case("21"):
@@ -199,19 +197,19 @@ public class MapEvent {
                     break;
 
                 case("31"):
-                    new WhiteHarbor(player);
+                    new KastereliСliff(player);
                     break;
 
                 case("41"):
-                    new WhiteHarbor(player);
+                    new IronIsland(player);
                     break;
 
                 case("12"):
-                    new WhiteHarbor(player);
+                    new BlackBackwater(player);
                     break;
 
                 case("22"):
-                    new WhiteHarbor(player);
+                    new Winterfell(player);
                     break;
 
                 case("32"):

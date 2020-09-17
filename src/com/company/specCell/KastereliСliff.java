@@ -6,20 +6,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
-public class WolfForest {
+public class KastereliСliff {
     private boolean resolution = false;
-    public WolfForest(Player player){
-        JFrame wolfForestFrame = new JFrame("Волчий Лес");
-        wolfForestFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    public KastereliСliff(Player player){
+        JFrame kastereliСliffFrame = new JFrame("Утёс Кастерли");
+        kastereliСliffFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension dimension = toolkit.getScreenSize();
-        wolfForestFrame.setBounds(dimension.width / 2 - 100, dimension.height / 2 - 100, 400, 300);
+        kastereliСliffFrame.setBounds(dimension.width / 2 - 100, dimension.height / 2 - 100, 400, 300);
 
         JPanel Top_Panel = new JPanel();
         JPanel Center_Panel = new JPanel();
         JPanel Bottom_Panel = new JPanel(new GridLayout(3,1));
 
-        wolfForestFrame.setLayout(new GridLayout(4,1));
+        kastereliСliffFrame.setLayout(new GridLayout(4,1));
 
         JLabel attempts = new JLabel("");
         JLabel playerName = new JLabel("На клетке: " + player.getName());
@@ -28,9 +28,9 @@ public class WolfForest {
 
         JButton Start = new JButton("Начать работу");
         JButton end = new JButton("Выйти");
-        JButton buyForestBtn = new JButton("Купить лес");
+        JButton buyOreBtn = new JButton("Купить руду");
         Center_Panel.add(Start);
-        Center_Panel.add(buyForestBtn);
+        Center_Panel.add(buyOreBtn);
 
         JLabel result = new JLabel("Результат:");
         Bottom_Panel.add(result);
@@ -40,15 +40,15 @@ public class WolfForest {
         Bottom_Panel.add(end);
 
         end.addActionListener(e -> {
-            wolfForestFrame.setVisible(false);
-            wolfForestFrame.dispose();
+            kastereliСliffFrame.setVisible(false);
+            kastereliСliffFrame.dispose();
         });
 
         Start.addActionListener(e -> {
             if (player.getAttempt() < 3){
-                Center_Panel.remove(buyForestBtn);
-                wolfForestFrame.pack();
-                wolfForestFrame.setBounds(dimension.width / 2 - 100, dimension.height / 2 - 100, 400, 300);
+                Center_Panel.remove(buyOreBtn);
+                kastereliСliffFrame.pack();
+                kastereliСliffFrame.setBounds(dimension.width / 2 - 100, dimension.height / 2 - 100, 400, 300);
                 player.addAttempt();
                 String str = "Ваши попытки: " + player.getAttempt() + "/3";
                 attempts.setText(str);
@@ -59,14 +59,14 @@ public class WolfForest {
 
                     //TODO перевод игрока в клетку с цитаделью
                 }else{
-                    message.setText("Вы получили лес!");
+                    message.setText("Вы получили руду!");
                     player.addForest(1);
                     int answer = JOptionPane.showConfirmDialog(null, "Вы будете продолжать работать?",null, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                     if (answer == 0){
                         player.setMobile(false);
-                        wolfForestFrame.dispose();
+                        kastereliСliffFrame.dispose();
                     }else{
-                        wolfForestFrame.dispose();
+                        kastereliСliffFrame.dispose();
                         player.resetAttempt();
                         player.setMobile(true);
                     }
@@ -77,12 +77,12 @@ public class WolfForest {
 
         });
 
-        buyForestBtn.addActionListener(e -> {
+        buyOreBtn.addActionListener(e -> {
             if (resolution){
                 if (player.getGold() >= 50){
                     player.removeGold(50);
-                    player.addForest(1);
-                    message.setText("Вы купили лес");
+                    player.addOre(1);
+                    message.setText("Вы купили руду");
                 }else{
                     message.setText("У вас нет денег для покупки!");
                 }
@@ -92,18 +92,18 @@ public class WolfForest {
                     resolution = true;
                     message.setText("Вход оплачен");
                     Center_Panel.remove(Start);
-                    wolfForestFrame.pack();
-                    wolfForestFrame.setBounds(dimension.width / 2 - 100, dimension.height / 2 - 100, 400, 300);
+                    kastereliСliffFrame.pack();
+                    kastereliСliffFrame.setBounds(dimension.width / 2 - 100, dimension.height / 2 - 100, 400, 300);
                 }else{
                     message.setText("У вас нет денег для оплаты входа!");
                 }
             }
         });
 
-        wolfForestFrame.add(Top_Panel, BorderLayout.NORTH);
-        wolfForestFrame.add(Center_Panel, BorderLayout.CENTER);
-        wolfForestFrame.add(Bottom_Panel, BorderLayout.SOUTH);
+        kastereliСliffFrame.add(Top_Panel, BorderLayout.NORTH);
+        kastereliСliffFrame.add(Center_Panel, BorderLayout.CENTER);
+        kastereliСliffFrame.add(Bottom_Panel, BorderLayout.SOUTH);
 
-        wolfForestFrame.setVisible(true);
+        kastereliСliffFrame.setVisible(true);
     }
 }

@@ -294,14 +294,21 @@ public class Main {
                         }
                         BufferedImage myPicture = ImageIO.read(new File(fileImg));
 
-//                        System.out.println("qqqqqqqqqqq" + panels[0][0].getHeight());
+                        BufferedImage scaleImage = new BufferedImage(dimension.width/13, dimension.height/20, 2);
+                        Graphics g = scaleImage.createGraphics();
+                        g.drawImage(myPicture, 0, 0, dimension.width/13, dimension.height/20,  null);
+                        g.dispose();
 
-                         Dimension dm = panels[a][b].getSize();
+                        //второй метод, но долгий
+//                        ImageIcon icon = new ImageIcon(fileImg);
+//                        Image scaleImage = icon.getImage().getScaledInstance(dimension.width/13, dimension.height/20, Image.SCALE_SMOOTH);
 
-                        scaleImg[a][b] = new ScaleImg(myPicture, 64, 96);
+
+                        JLabel picLabel = new JLabel(new ImageIcon(scaleImage));
+//                        scaleImg[a][b] = new ScaleImg(myPicture);
                         Img[a][b].setLayout(new BorderLayout());
                         Img[a][b].setBorder(BorderFactory.createLineBorder(Color.black,2));
-                        Img[a][b].add(scaleImg[a][b], BorderLayout.CENTER);
+                        Img[a][b].add(picLabel);
                         panels[a][b].add(Img[a][b], BorderLayout.CENTER);
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -397,7 +404,7 @@ public class Main {
                                     fileImg ="graphics/mill.png";
                                     BufferedImage myPicture;
                                     myPicture = ImageIO.read(new File(fileImg));
-                                    scaleImg[i][j] = new ScaleImg(myPicture, 64, 96);
+                                    scaleImg[i][j] = new ScaleImg(myPicture);
                                     Img[i][j].add(scaleImg[i][j], BorderLayout.CENTER);
                                 } catch (IOException e) {}
                                 break;
@@ -407,7 +414,7 @@ public class Main {
                                     fileImg ="graphics/farm.png";
                                     BufferedImage myPicture;
                                     myPicture = ImageIO.read(new File(fileImg));
-                                    scaleImg[i][j] = new ScaleImg(myPicture, 64, 96);
+                                    scaleImg[i][j] = new ScaleImg(myPicture);
                                     Img[i][j].add(scaleImg[i][j], BorderLayout.CENTER);
                                 } catch (IOException e) {}
                                 break;
@@ -417,7 +424,7 @@ public class Main {
                                     fileImg ="graphics/ceramic.png";
                                     BufferedImage myPicture;
                                     myPicture = ImageIO.read(new File(fileImg));
-                                    scaleImg[i][j] = new ScaleImg(myPicture, 64, 96);
+                                    scaleImg[i][j] = new ScaleImg(myPicture);
                                     Img[i][j].add(scaleImg[i][j], BorderLayout.CENTER);
                                 } catch (IOException e) {}
                                 break;
@@ -427,7 +434,7 @@ public class Main {
                                     fileImg ="graphics/cloth.png";
                                     BufferedImage myPicture;
                                     myPicture = ImageIO.read(new File(fileImg));
-                                    scaleImg[i][j] = new ScaleImg(myPicture, 64, 96);
+                                    scaleImg[i][j] = new ScaleImg(myPicture);
                                     Img[i][j].add(scaleImg[i][j], BorderLayout.CENTER);
                                 } catch (IOException e) {}
                                 break;
@@ -437,7 +444,7 @@ public class Main {
                                     fileImg ="graphics/winemaking.png";
                                     BufferedImage myPicture;
                                     myPicture = ImageIO.read(new File(fileImg));
-                                    scaleImg[i][j] = new ScaleImg(myPicture, 64, 96);
+                                    scaleImg[i][j] = new ScaleImg(myPicture);
                                     Img[i][j].add(scaleImg[i][j], BorderLayout.CENTER);
                                 } catch (IOException e) {}
                                 break;
@@ -447,7 +454,7 @@ public class Main {
                                     fileImg ="graphics/gun.png";
                                     BufferedImage myPicture;
                                     myPicture = ImageIO.read(new File(fileImg));
-                                    scaleImg[i][j] = new ScaleImg(myPicture, 64, 96);
+                                    scaleImg[i][j] = new ScaleImg(myPicture);
                                     Img[i][j].add(scaleImg[i][j], BorderLayout.CENTER);
                                 } catch (IOException e) {}
                                 break;

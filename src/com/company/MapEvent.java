@@ -213,19 +213,39 @@ public class MapEvent {
                     break;
 
                 case("32"):
-                    new WhiteHarbor(player);
+                    new IronIsland(player);
                     break;
 
                 case("42"):
-                    new WhiteHarbor(player);
+                    new IronIsland(player);
                     break;
 
                 case("71"):
-                    new WhiteHarbor(player);
+                    new IronIsland(player);
                     break;
 
                 case("731"):
-                    new WhiteHarbor(player);
+                    new IronIsland(player);
+                    break;
+
+                case("732"):
+                    new IronIsland(player);
+                    break;
+
+                case("72"):
+                    new IronIsland(player);
+                    break;
+
+                case("73"):
+                    new IronIsland(player);
+                    break;
+
+                case("51"):
+                    new IronIsland(player);
+                    break;
+
+                case("531"):
+                    new IronIsland(player);
                     break;
 
             }

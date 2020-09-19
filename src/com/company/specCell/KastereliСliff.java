@@ -60,7 +60,7 @@ public class KastereliСliff {
                     //TODO перевод игрока в клетку с цитаделью
                 }else{
                     message.setText("Вы получили руду!");
-                    player.addForest(1);
+                    player.addOre(1);
                     int answer = JOptionPane.showConfirmDialog(null, "Вы будете продолжать работать?",null, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                     if (answer == 0){
                         player.setMobile(false);
@@ -107,3 +107,4 @@ public class KastereliСliff {
         kastereliСliffFrame.setVisible(true);
     }
 }
+

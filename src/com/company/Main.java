@@ -564,23 +564,15 @@ public class Main {
     public static int indexChecker(int index){
         if(index >= players.size()){
             index = 0;
-            indexChecker(index);
+            return indexChecker(index);
+        } else if(players.get(index).isDead()) {
+            index++;
+            return indexChecker(index);
+        }else {
+            return index;
         }
-        return index;
-    }
 
-//    public static int indexChecker(int index){
-//        if(index >= players.size()){
-//            index = 0;
-//            indexChecker(index);
-//        }
-//        if (!players.get(index).getMobile()){
-//            players.get(index).setMobile(true);
-//            index++;
-//            indexChecker(index);
-//        }
-//        return index;
-//    }
+    }
 
     public static void startGame(){
         end_button.addActionListener(e -> {

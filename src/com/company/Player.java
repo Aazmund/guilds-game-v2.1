@@ -11,6 +11,7 @@ public class Player {
     private ArrayList<Pair> outerPairs= new ArrayList<>();
     private boolean resolution = true;
     private boolean mobile = true;
+    private boolean dead = false;
     private short[] innerList = {1,5,1,6,1,7,2,8,3,9,4,9,5,9,6,9,7,9,8,8,9,7,9,6,9,5,9,4,9,3,8,2,7,1,6,1,5,1,4,1,3,1,2,2,1,3,1,4};
     private short[] outerList = {0,0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,1,10,2,10,3,10,4,10,5,10,6,10,7,10,8,10,9,10,10,10,10,9,10,8,10,7,10,6,10,5,10,4,10,3,10,2,10,1,10,0,9,0,8,0,7,0,6,0,5,0,4,0,3,0,2,0,1,0};
 //    private String type;
@@ -89,6 +90,10 @@ public class Player {
         this.horse += horse;
     }
 
+    public void removeHorse(int horse){
+        this.horse -= horse;
+    }
+
     public void addGold(int gold){
         this.gold += gold;
     }
@@ -101,8 +106,80 @@ public class Player {
         this.forest += forest;
     }
 
+    public void removeForest(int forest){
+        this.forest -= forest;
+    }
+
     public void addSheep(int sheep){
         this.sheep += sheep;
+    }
+
+    public void  removeSheep(int sheep) {
+        this.sheep -= sheep;
+    }
+
+    public int getCeramic() {
+        return ceramic;
+    }
+
+    public void setCeramic(int ceramic) {
+        this.ceramic = ceramic;
+    }
+
+    public void addCeramic(int ceramic) {
+        this.ceramic += ceramic;
+    }
+
+    public void removeCeramic(int ceramic) {
+        this.ceramic -= ceramic;
+    }
+
+    public int getCloth() {
+        return cloth;
+    }
+
+    public void setCloth(int cloth) {
+        this.cloth = cloth;
+    }
+
+    public void addCloth(int cloth) {
+        this.cloth += cloth;
+    }
+
+    public void removeCloth(int cloth) {
+        this.cloth -= cloth;
+    }
+
+    public int getWinemaking() {
+        return winemaking;
+    }
+
+    public void setWinemaking(int winemaking) {
+        this.winemaking = winemaking;
+    }
+
+    public void addWinemaking(int winemaking) {
+        this.winemaking += winemaking;
+    }
+
+    public void removeWinemaking(int winemaking) {
+        this.winemaking -= winemaking;
+    }
+
+    public int getGun() {
+        return gun;
+    }
+
+    public void setGun(int gun) {
+        this.gun = gun;
+    }
+
+    public void addGun(int gun) {
+        this.gun += gun;
+    }
+
+    public void removeGun(int gun) {
+        this.gun -= gun;
     }
 
     public int getOre() {
@@ -114,7 +191,11 @@ public class Player {
     }
 
     public void addOre(int ore){
-        this.ore += 1;
+        this.ore += ore;
+    }
+
+    public void removeOre(int ore){
+        this.ore -= ore;
     }
 
     private void searchOuterIndex(){
@@ -520,6 +601,14 @@ public class Player {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public boolean isDead() {
+        return dead;
+    }
+
+    public void setDead(boolean dead) {
+        this.dead = dead;
     }
 //
 //    public void configuration(int count){

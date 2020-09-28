@@ -97,7 +97,7 @@ public class IronIsland {
                 String str = "Ваши попытки: " + player.getAttempt() + "/3";
                 attempts.setText(str);
                 Random random = new Random();
-                if (random.nextInt(6) + 1 <= 6){
+                if (random.nextInt(6) + 1 == 6){
                     message.setText("Неудача! Для Вас игра окончена!");
                     Center_Panel.remove(start);
                     player.setDead(true);

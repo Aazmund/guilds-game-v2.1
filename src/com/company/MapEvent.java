@@ -213,41 +213,92 @@ public class MapEvent {
                     break;
 
                 case("32"):
-                    new IronIsland(player);
+                    new Lannisport(player);
                     break;
 
                 case("42"):
-                    new IronIsland(player);
+
                     break;
 
                 case("71"):
-                    new IronIsland(player);
+
                     break;
 
                 case("731"):
-                    new IronIsland(player);
+
                     break;
 
                 case("732"):
-                    new IronIsland(player);
+
                     break;
 
                 case("72"):
-                    new IronIsland(player);
+
                     break;
 
                 case("73"):
-                    new IronIsland(player);
+
                     break;
 
                 case("51"):
-                    new IronIsland(player);
+
                     break;
 
                 case("531"):
-                    new IronIsland(player);
+
                     break;
 
+                case("532"):
+
+                    break;
+
+                case("52"):
+
+                    break;
+
+                case("53"):
+
+                    break;
+
+                case("81"):
+
+                    break;
+
+                case("831"):
+
+                    break;
+
+                case("832"):
+
+                    break;
+
+                case("82"):
+
+                    break;
+
+                case("83"):
+
+                    break;
+
+                case("61"):
+
+                    break;
+
+                case("631"):
+
+                    break;
+
+                case("632"):
+
+                    break;
+
+                case("62"):
+
+                    break;
+
+                case("63"):
+
+                    break;
             }
         }
     }
